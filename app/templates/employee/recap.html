@@ -1,0 +1,46 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\employee\recap.html -->
+{% extends "layout.html" %}
+
+{% block title %}Rekap Absensi - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Rekap Absensi</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Status</th>
+                <th>Alasan</th>
+                <th>Foto</th>
+                <th>Clock In</th>
+                <th>Clock Out</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+            <tr>
+                <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ 'Izin' if record.status == AttendanceStatus.IJIN else 'Absensi' }}</td>
+                <td>{{ record.reason if record.reason else 'N/A' }}</td>
+                <td>
+                    {% if record.photo %}
+                        <img src="{{ url_for('static', filename='uploads/' + record.photo) }}" alt="Foto" width="100">
+                    {% else %}
+                        <p>Tidak ada foto yang diunggah.</p>
+                    {% endif %}
+                </td>
+                <td>{{ record.time.strftime('%H:%M:%S') }}</td>
+                <td>{{ record.time_out.strftime('%H:%M:%S') if record.time_out else 'Belum Clock Out' }}</td>
+                <td>{{ record.latitude }}</td>
+                <td>{{ record.longitude }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('user_bp.clock_in') }}" class="btn btn-primary">Clock In Lagi</a>
+    <a href="{{ url_for('user_bp.user_dashboard') }}" class="btn btn-secondary">Kembali ke Dashboard</a>
+</div>
+{% endblock %}

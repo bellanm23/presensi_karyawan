@@ -1,0 +1,83 @@
+<!-- app/templates/employee/user_dashboard.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Sistem Presensi</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('home.home') }}">Sistem Presensi</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth_bp.logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Welcome, {{ employee.name }}</h2>
+        <div class="alert alert-info">
+            <h4>Dashboard User</h4>
+            <p>Selamat datang di dasbor pengguna. Anda dapat melihat status presensi Anda di sini.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Informasi Pengguna
+            </div>
+            <div class="card-body">
+                <p><strong>ID:</strong> {{ employee.id }}</p>
+                <p><strong>Nama:</strong> {{ employee.name }}</p>
+                <p><b>Foto Profil:</b></p>
+                {% if employee.photo_profile %}
+                    <img src="{{ url_for('static', filename='uploads/' + employee.photo_profile) }}" alt="Foto Profil" width="100" style="height:auto;">
+                {% else %}
+                    <p>Tidak ada foto profil yang tersedia.</p>
+                {% endif %}
+                <p><strong>Email:</strong> {{ employee.email }}</p>
+                <p><strong>No. Telepon:</strong> {{ employee.phone_number }}</p>
+                <p><strong>Status:</strong> 
+                    {% if current_user.status == 1 %}
+                        Admin
+                    {% else %}
+                        User
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h4>Fitur Presensi</h4>
+            <p>Berikut ini adalah opsi presensi yang tersedia:</p>
+            <a href="{{ url_for('user_bp.clock_in') }}" class="btn btn-success">Clock In</a>
+            <a href="{{ url_for('user_bp.clock_out') }}" class="btn btn-danger">Clock Out</a>
+            <a href="{{ url_for('user_bp.recap') }}" class="btn btn-info">Rekap Absensi</a>
+            <a href="{{ url_for('employee.leave') }}" class="btn btn-info">Pengajuan Izin Absensi</a>
+        </div>
+
+        <hr>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Sistem Presensi. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

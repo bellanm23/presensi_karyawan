@@ -1,0 +1,40 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\admin\list_employees.html -->
+
+{% extends "layout.html" %}
+
+{% block title %}List Employees - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Employee List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.gender }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone_number }}</td>
+                <td>
+                    <a href="{{ url_for('admin_bp.edit_employee', id=employee.id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ url_for('admin_bp.delete_employee', id=employee.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Tombol Back -->
+    <a href="{{ url_for('admin_bp.admin_dashboard') }}" class="btn btn-secondary btn-block mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\employee\profile.html -->
+
+{% extends "layout.html" %}
+
+{% block title %}Profil Karyawan{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Profil Karyawan</h1>
+    <p><b>ID:</b> {{ employee.id }}</p>
+    <p><b>Nama:</b> {{ employee.name }}</p>
+    <p><b>Gender:</b> {{ employee.gender }}</p>
+    <p><b>Email:</b> {{ employee.email }}</p>
+    <p><b>No. Telepon:</b> {{ employee.phone_number }}</p>
+    <p><b>Foto Profil:</b></p>
+    {% if employee.photo_profile %}
+        <img src="{{ url_for('static', filename='uploads/' + employee.photo_profile) }}" alt="Foto Profil" width="100" style="height:auto;">
+    {% else %}
+        <p>Foto tidak tersedia</p>
+    {% endif %}
+    <a href="{{ url_for('auth_bp.logout') }}" class="btn btn-warning">Logout</a>
+</div>
+{% endblock %}

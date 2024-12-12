@@ -1,0 +1,26 @@
+<!-- app/templates/employee/leave.html -->
+{% extends "layout.html" %}
+
+{% block title %}Pengajuan Izin - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Pengajuan Izin</h2>
+    <form method="POST" action="{{ url_for('employee.leave') }}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Alasan Izin:</label>
+            <textarea class="form-control" name="reason" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Tanggal Izin:</label>
+            <input type="date" class="form-control" name="date" required>
+        </div>
+        <div class="form-group">
+            <label>Ambil Foto (Opsional):</label>
+            <input type="file" class="form-control-file" name="photo">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajukan Izin</button>
+    </form>
+    <a href="{{ url_for('user_bp.user_dashboard') }}" class="btn btn-secondary mt-3">Kembali ke Dashboard</a>
+</div>
+{% endblock %}

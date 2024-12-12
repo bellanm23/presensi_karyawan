@@ -1,0 +1,22 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\home.html -->
+
+{% extends "layout.html" %}
+
+{% block title %}Home - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Selamat datang di Sistem Presensi!</h1>
+    {% if user_status == 1 %}
+        <h2>Selamat datang, Admin!</h2>
+        <a href="{{ url_for('admin_bp.admin_dashboard') }}" class="btn btn-success">Go to Admin Dashboard</a>
+    {% elif user_status == 0 %}
+        <h2>Selamat datang, User!</h2>
+        <a href="{{ url_for('user_bp.user_dashboard') }}" class="btn btn-primary">Go to User Dashboard</a>
+    {% else %}
+        <h2>Silakan login untuk melanjutkan.</h2>
+    {% endif %}
+    <a href="{{ url_for('auth_bp.login') }}" class="btn btn-primary">Login</a>
+    <a href="{{ url_for('auth_bp.forgot_password') }}" class="btn btn-secondary">Forgot Password</a>
+</div>
+{% endblock %}

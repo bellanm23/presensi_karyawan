@@ -1,0 +1,22 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\admin\edit_employee.html -->
+
+{% extends "layout.html" %}
+
+{% block title %}Edit Employee - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Edit Employee</h2>
+    <form action="{{ url_for('admin_bp.edit_employee', id=employee.id) }}" method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" name="name" value="{{ employee.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" value="{{ employee.email }}" required>
+        </div>
+        <button type="submit" class="btn btn-warning btn-block">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

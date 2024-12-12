@@ -1,0 +1,35 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\admin\attendance.html -->
+ 
+{% extends "layout.html" %}
+
+{% block title %}Admin Dashboard - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Admin Dashboard</h2>
+    <a href="{{ url_for('admin_bp.add_employee') }}" class="btn btn-primary mb-3">Add Employee</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>
+                    <a href="{{ url_for('admin_bp.edit_employee', id=employee.id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ url_for('admin_bp.delete_employee', id=employee.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

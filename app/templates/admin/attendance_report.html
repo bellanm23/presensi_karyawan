@@ -1,0 +1,45 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\admin\attendance_report.html -->
+{% extends "layout.html" %}
+
+{% block title %}Rekap Absensi Karyawan - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Rekap Absensi Karyawan</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Nama Karyawan</th>
+                <th>Status</th>
+                <th>Tanggal</th>
+                <th>Waktu Clock In</th>
+                <th>Waktu Clock Out</th>
+                <th>Alasan</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+            <tr>
+                <td>{{ record.employee_id }}</td>
+                <td>{{ record.employee.name if record.employee else 'Tidak ada nama' }}</td> <!-- Pastikan ini sesuai dengan nama kolom -->
+                <td>{{ record.status }}</td>
+                <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ record.time.strftime('%H:%M:%S') }}</td>
+                <td>{{ record.time_out.strftime('%H:%M:%S') if record.time_out else 'Belum Clock Out' }}</td>
+                <td>{{ record.reason if record.reason else 'N/A' }}</td>
+                <td>
+                    {% if record.photo %}
+                        <img src="{{ url_for('static', filename='uploads/' + record.photo) }}" alt="Foto" width="100">
+                    {% else %}
+                        <p>Tidak ada foto yang diunggah.</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('admin_bp.admin_dashboard') }}" class="btn btn-secondary btn-block mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}

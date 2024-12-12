@@ -1,0 +1,72 @@
+<!-- C:\attendance_system\script backup\absensi_app\app\templates\admin\dashboard.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Sistem Presensi</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('home.home') }}">Sistem Presensi</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth_bp.logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Admin Dashboard</h2>
+        <h3>Welcome to the Admin Dashboard!</h3> <!-- Pesan sambutan ditambahkan di sini -->
+        <a href="{{ url_for('admin_bp.add_employee') }}" class="btn btn-primary mb-3">Add Employee</a>
+        <a href="{{ url_for('admin_bp.list_employee') }}" class="btn btn-secondary mb-3">List Employees</a>
+        <a href="{{ url_for('admin_bp.attendance_report') }}" class="btn btn-info mb-3">Rekap Absensi</a>
+        <a href="{{ url_for('admin_bp.location_settings') }}" class="btn btn-warning mb-3">Setting Location</a>
+        
+        <table class="table table-striped">
+            <!-- <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead> -->
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_bp.edit_employee', id=employee.id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ url_for('admin_bp.delete_employee', id=employee.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Sistem Presensi. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

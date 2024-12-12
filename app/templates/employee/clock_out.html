@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Clock Out - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Clock Out</h2>
+    <div class="alert alert-info">
+        <p>Silakan klik tombol di bawah ini untuk melakukan clock out.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('user_bp.clock_out') }}">
+        <button type="submit" class="btn btn-danger mt-3">Clock Out</button>
+    </form>
+    <hr>
+    <a href="{{ url_for('user_bp.user_dashboard') }}" class="btn btn-secondary">Kembali ke Dashboard</a>
+</div>
+{% endblock %}

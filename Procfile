@@ -1,1 +1,1 @@
-web: python presensi_karyawan/run.py
+web: python run.py

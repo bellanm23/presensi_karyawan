@@ -1,0 +1,17 @@
+# Gunakan image Python resmi sebagai base image
+FROM python:3.12-slim
+
+# Set direktori kerja di dalam container
+WORKDIR /app
+
+# Salin file requirements.txt yang ada di luar folder app ke dalam container
+COPY presensi_karyawan/requirements.txt /app/
+
+# Install dependensi dari requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Salin semua file dari folder presensi_karyawan ke dalam container
+COPY presensi_karyawan /app/
+
+# Tentukan perintah untuk menjalankan aplikasi
+CMD ["python", "run.py"]

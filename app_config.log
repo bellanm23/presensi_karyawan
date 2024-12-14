@@ -219,3 +219,144 @@
 2024-12-14 03:27:26,782 - INFO - User admin@gmail.com logged out.
 2024-12-14 03:27:26,782 - INFO - 127.0.0.1 - - [14/Dec/2024 03:27:26] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
 2024-12-14 03:27:26,795 - INFO - 127.0.0.1 - - [14/Dec/2024 03:27:26] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 10:37:31,540 - INFO - Config loaded successfully
+2024-12-14 10:37:31,594 - INFO - Application started.
+2024-12-14 10:37:31,708 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 10:37:31,715 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 10:37:31,727 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 10:37:31,737 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 10:37:31,741 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 10:37:31,765 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 10:37:31,765 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 10:37:34,116 - INFO - Home page accessed by user: Guest
+2024-12-14 10:37:34,147 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:34] "GET / HTTP/1.1" 200 -
+2024-12-14 10:37:34,300 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:34] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 10:37:37,911 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:37] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 10:37:39,915 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 10:37:39,962 - INFO - User found: admin@gmail.com, Status: 1
+2024-12-14 10:37:40,293 - INFO - User admin@gmail.com successfully logged in.
+2024-12-14 10:37:40,293 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:40] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-12-14 10:37:40,293 - INFO - Loading user with ID: 1
+2024-12-14 10:37:40,310 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:37:40,320 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:40] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:37:58,943 - INFO - Loading user with ID: 1
+2024-12-14 10:37:58,959 - INFO - 2 attendance records fetched for report.
+2024-12-14 10:37:58,975 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:58] "GET /attendance_report HTTP/1.1" 200 -
+2024-12-14 10:37:59,022 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:59] "[36mGET /static/uploads/selfie.png HTTP/1.1[0m" 304 -
+2024-12-14 10:37:59,022 - INFO - 127.0.0.1 - - [14/Dec/2024 10:37:59] "[36mGET /static/uploads/Sick_.jpg HTTP/1.1[0m" 304 -
+2024-12-14 10:38:03,017 - INFO - Loading user with ID: 1
+2024-12-14 10:38:03,017 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:38:03,017 - INFO - 127.0.0.1 - - [14/Dec/2024 10:38:03] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:38:08,493 - INFO - Loading user with ID: 1
+2024-12-14 10:38:08,493 - INFO - 2 employees listed.
+2024-12-14 10:38:08,508 - INFO - 127.0.0.1 - - [14/Dec/2024 10:38:08] "GET /list_employees HTTP/1.1" 200 -
+2024-12-14 10:38:12,143 - INFO - Loading user with ID: 1
+2024-12-14 10:38:12,155 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:38:12,155 - INFO - 127.0.0.1 - - [14/Dec/2024 10:38:12] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:38:13,191 - INFO - Loading user with ID: 1
+2024-12-14 10:38:13,191 - INFO - 127.0.0.1 - - [14/Dec/2024 10:38:13] "GET /add_employee HTTP/1.1" 200 -
+2024-12-14 10:51:04,858 - INFO - Loading user with ID: 1
+2024-12-14 10:51:05,204 - INFO - New user added with email jeruk@gmail.com.
+2024-12-14 10:51:05,219 - INFO - New employee added with email jeruk@gmail.com.
+2024-12-14 10:51:05,219 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:05] "[32mPOST /add_employee HTTP/1.1[0m" 302 -
+2024-12-14 10:51:05,235 - INFO - Loading user with ID: 1
+2024-12-14 10:51:05,235 - INFO - 3 employees listed.
+2024-12-14 10:51:05,235 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:05] "GET /list_employees HTTP/1.1" 200 -
+2024-12-14 10:51:06,994 - INFO - Loading user with ID: 1
+2024-12-14 10:51:06,994 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:51:06,994 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:06] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:08,726 - INFO - Loading user with ID: 1
+2024-12-14 10:51:08,735 - INFO - User admin@gmail.com logged out.
+2024-12-14 10:51:08,735 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:08] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-12-14 10:51:08,735 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:08] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 10:51:19,128 - INFO - Attempting to login with email: jeruk@gmail.com
+2024-12-14 10:51:19,128 - INFO - User found: jeruk@gmail.com, Status: 0
+2024-12-14 10:51:19,458 - INFO - User jeruk@gmail.com successfully logged in.
+2024-12-14 10:51:19,458 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:19] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-12-14 10:51:19,458 - INFO - Loading user with ID: 5
+2024-12-14 10:51:19,473 - INFO - User 5 accessed their dashboard.
+2024-12-14 10:51:19,489 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:19] "GET /user/user_dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:19,630 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:19] "GET /static/uploads/Jeruk.jpg HTTP/1.1" 200 -
+2024-12-14 10:51:25,158 - INFO - Loading user with ID: 5
+2024-12-14 10:51:25,178 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:25] "GET /user/clock_in HTTP/1.1" 200 -
+2024-12-14 10:51:33,825 - INFO - Loading user with ID: 5
+2024-12-14 10:51:33,845 - INFO - User 5 successfully clocked in at -6.138705, 106.824231 with photo selfie.png.
+2024-12-14 10:51:33,846 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:33] "[32mPOST /user/clock_in HTTP/1.1[0m" 302 -
+2024-12-14 10:51:33,862 - INFO - Loading user with ID: 5
+2024-12-14 10:51:33,866 - INFO - User 5 accessed their dashboard.
+2024-12-14 10:51:33,872 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:33] "GET /user/user_dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:33,940 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:33] "[36mGET /static/uploads/Jeruk.jpg HTTP/1.1[0m" 304 -
+2024-12-14 10:51:35,995 - INFO - Loading user with ID: 5
+2024-12-14 10:51:36,011 - INFO - User 5 accessed their attendance recap. Found 1 records.
+2024-12-14 10:51:36,027 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:36] "GET /user/recap HTTP/1.1" 200 -
+2024-12-14 10:51:36,199 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:36] "GET /static/uploads/selfie.png HTTP/1.1" 200 -
+2024-12-14 10:51:37,865 - INFO - Loading user with ID: 5
+2024-12-14 10:51:37,865 - INFO - User 5 accessed their dashboard.
+2024-12-14 10:51:37,865 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:37] "GET /user/user_dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:37,928 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:37] "[36mGET /static/uploads/Jeruk.jpg HTTP/1.1[0m" 304 -
+2024-12-14 10:51:39,158 - INFO - Loading user with ID: 5
+2024-12-14 10:51:39,158 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:39] "GET /user/clock_out HTTP/1.1" 200 -
+2024-12-14 10:51:40,173 - INFO - Loading user with ID: 5
+2024-12-14 10:51:40,188 - INFO - User 5 successfully clocked out.
+2024-12-14 10:51:40,204 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:40] "[32mPOST /user/clock_out HTTP/1.1[0m" 302 -
+2024-12-14 10:51:40,204 - INFO - Loading user with ID: 5
+2024-12-14 10:51:40,219 - INFO - User 5 accessed their dashboard.
+2024-12-14 10:51:40,219 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:40] "GET /user/user_dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:40,298 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:40] "[36mGET /static/uploads/Jeruk.jpg HTTP/1.1[0m" 304 -
+2024-12-14 10:51:42,433 - INFO - Loading user with ID: 5
+2024-12-14 10:51:42,434 - INFO - User jeruk@gmail.com logged out.
+2024-12-14 10:51:42,434 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:42] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-12-14 10:51:42,434 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:42] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 10:51:47,079 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 10:51:47,079 - INFO - User found: admin@gmail.com, Status: 1
+2024-12-14 10:51:47,409 - INFO - User admin@gmail.com successfully logged in.
+2024-12-14 10:51:47,409 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:47] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-12-14 10:51:47,409 - INFO - Loading user with ID: 1
+2024-12-14 10:51:47,424 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:51:47,424 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:47] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:49,346 - INFO - Loading user with ID: 1
+2024-12-14 10:51:49,355 - INFO - 3 attendance records fetched for report.
+2024-12-14 10:51:49,355 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:49] "GET /attendance_report HTTP/1.1" 200 -
+2024-12-14 10:51:49,402 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:49] "GET /static/uploads/Sick_.jpg HTTP/1.1" 200 -
+2024-12-14 10:51:49,433 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:49] "[36mGET /static/uploads/selfie.png HTTP/1.1[0m" 304 -
+2024-12-14 10:51:51,176 - INFO - Loading user with ID: 1
+2024-12-14 10:51:51,176 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:51:51,176 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:51] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:51:52,180 - INFO - Loading user with ID: 1
+2024-12-14 10:51:52,196 - INFO - 3 employees listed.
+2024-12-14 10:51:52,196 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:52] "GET /list_employees HTTP/1.1" 200 -
+2024-12-14 10:51:55,087 - INFO - Loading user with ID: 1
+2024-12-14 10:51:55,087 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:55] "GET /edit_employee/4 HTTP/1.1" 200 -
+2024-12-14 10:51:59,704 - INFO - Loading user with ID: 1
+2024-12-14 10:51:59,718 - INFO - Employee with ID 4 updated.
+2024-12-14 10:51:59,718 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:59] "[32mPOST /edit_employee/4 HTTP/1.1[0m" 302 -
+2024-12-14 10:51:59,718 - INFO - Loading user with ID: 1
+2024-12-14 10:51:59,733 - INFO - 3 employees listed.
+2024-12-14 10:51:59,733 - INFO - 127.0.0.1 - - [14/Dec/2024 10:51:59] "GET /list_employees HTTP/1.1" 200 -
+2024-12-14 10:52:04,939 - INFO - Loading user with ID: 1
+2024-12-14 10:52:04,948 - INFO - User with ID 5 and all related records deleted successfully.
+2024-12-14 10:52:04,948 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:04] "[32mPOST /delete_employee/5 HTTP/1.1[0m" 302 -
+2024-12-14 10:52:04,964 - INFO - Loading user with ID: 1
+2024-12-14 10:52:04,975 - INFO - 2 employees listed.
+2024-12-14 10:52:04,975 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:04] "GET /list_employees HTTP/1.1" 200 -
+2024-12-14 10:52:05,027 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:05] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 10:52:05,721 - INFO - Loading user with ID: 1
+2024-12-14 10:52:05,721 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:52:05,721 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:05] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:52:06,683 - INFO - Loading user with ID: 1
+2024-12-14 10:52:06,691 - INFO - 2 attendance records fetched for report.
+2024-12-14 10:52:06,691 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:06] "GET /attendance_report HTTP/1.1" 200 -
+2024-12-14 10:52:06,753 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:06] "GET /static/uploads/selfie.png HTTP/1.1" 200 -
+2024-12-14 10:52:06,753 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:06] "GET /static/uploads/Sick_.jpg HTTP/1.1" 200 -
+2024-12-14 10:52:08,747 - INFO - Loading user with ID: 1
+2024-12-14 10:52:08,747 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 10:52:08,747 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:08] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 10:52:10,318 - INFO - Loading user with ID: 1
+2024-12-14 10:52:10,318 - INFO - User admin@gmail.com logged out.
+2024-12-14 10:52:10,318 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:10] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-12-14 10:52:10,318 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:10] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 10:52:19,942 - INFO - Attempting to login with email: jeruk@gmail.com
+2024-12-14 10:52:19,942 - WARNING - Failed login attempt. Email jeruk@gmail.com not found in database.
+2024-12-14 10:52:19,942 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:19] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-12-14 10:52:19,958 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:19] "GET /auth/login HTTP/1.1" 200 -

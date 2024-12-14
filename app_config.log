@@ -360,3 +360,27 @@
 2024-12-14 10:52:19,942 - WARNING - Failed login attempt. Email jeruk@gmail.com not found in database.
 2024-12-14 10:52:19,942 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:19] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
 2024-12-14 10:52:19,958 - INFO - 127.0.0.1 - - [14/Dec/2024 10:52:19] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 12:54:00,881 - INFO - Config loaded successfully
+2024-12-14 12:54:00,944 - INFO - Application started.
+2024-12-14 12:54:01,128 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 12:54:01,136 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 12:54:01,156 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 12:54:01,163 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 12:54:01,168 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 12:54:01,192 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 12:54:01,192 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 12:54:03,002 - INFO - Home page accessed by user: Guest
+2024-12-14 12:54:03,024 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:03] "GET / HTTP/1.1" 200 -
+2024-12-14 12:54:07,543 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:07] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 12:54:10,157 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 12:54:10,216 - INFO - User found: admin@gmail.com, Status: 1
+2024-12-14 12:54:10,560 - INFO - User admin@gmail.com successfully logged in.
+2024-12-14 12:54:10,565 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:10] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-12-14 12:54:10,572 - INFO - Loading user with ID: 1
+2024-12-14 12:54:10,580 - INFO - User admin@gmail.com accessed the dashboard.
+2024-12-14 12:54:10,590 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:10] "GET /dashboard HTTP/1.1" 200 -
+2024-12-14 12:54:11,720 - INFO - Loading user with ID: 1
+2024-12-14 12:54:11,728 - INFO - User admin@gmail.com logged out.
+2024-12-14 12:54:11,732 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:11] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-12-14 12:54:11,744 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:11] "GET /auth/login HTTP/1.1" 200 -

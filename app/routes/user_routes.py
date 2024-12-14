@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Blueprint, render_template, redirect, url_for, flash, request, current_app
+from flask import Blueprint, render_template, redirect, url_for, flash, request, current_app, jsonify
 from flask_login import login_required, current_user
 from app import db
 from app.models import Attendance, AttendanceStatus, Employee
@@ -18,18 +18,41 @@ logging.basicConfig(level=logging.INFO,  # Atur level log yang diinginkan (INFO,
 
 user_bp = Blueprint('user_bp', __name__)
 
-@user_bp.route('/user_dashboard')
+@user_bp.route('/user_dashboard', methods=['GET'])
 @login_required
 def user_dashboard():
     employee = Employee.query.filter_by(user_id=current_user.id).first()
     attendances = Attendance.query.filter_by(employee_id=current_user.id).all()
     
-    logging.info(f"User {current_user.id} accessed their dashboard.")  # Logging saat pengguna mengakses dashboard
+    logging.info(f"User  {current_user.id} accessed their dashboard.")  # Logging saat pengguna mengakses dashboard
     
-    # Debugging
-    print(f"Employee: {employee}")  # Cek apakah employee tidak None
-    print(f"Attendances: {attendances}")  # Cek apakah attendances tidak kosong
-    
+    # Jika permintaan adalah JSON, kembalikan data dalam format JSON
+    if request.is_json:
+        attendance_data = [
+            {
+                'date': attendance.date.strftime('%Y-%m-%d'),
+                'status': attendance.status.value,  # Menggunakan .value untuk mendapatkan string dari enum
+                'time': attendance.time.strftime('%H:%M:%S'),
+                'time_out': attendance.time_out.strftime('%H:%M:%S') if attendance.time_out else 'Belum Clock Out',
+                'reason': attendance.reason if attendance.reason else 'N/A',
+                'photo': attendance.photo if attendance.photo else 'Tidak ada foto yang diunggah.'
+            }
+            for attendance in attendances
+        ]
+        response_data = {
+            'employee': {
+                'id': employee.id,
+                'name': employee.name,
+                'gender': employee.gender,
+                'email': employee.email,
+                'phone_number': employee.phone_number,
+                'photo_profile': employee.photo_profile if employee.photo_profile else 'Tidak ada foto profil'
+            },
+            'attendances': attendance_data
+        }
+        return jsonify(response_data), 200
+
+    # Jika permintaan bukan JSON, render halaman dashboard
     return render_template('employee/user_dashboard.html', attendances=attendances, employee=employee)
 
 @user_bp.route('/clock_in', methods=['GET', 'POST'])
@@ -42,14 +65,14 @@ def clock_in():
 
         if not photo:
             flash('Foto tidak ditemukan. Silakan coba lagi.', 'danger')
-            logging.warning(f"User {current_user.id} failed clock-in: Photo not provided.")  # Logging jika foto tidak ada
-            return redirect(url_for('user_bp.clock_in'))
+            logging.warning(f"User  {current_user.id} failed clock-in: Photo not provided.")  # Logging jika foto tidak ada
+            return jsonify({"status": "error", "message": "Foto tidak ditemukan. Silakan coba lagi."}), 400
 
         # Validasi latitude dan longitude
         if not lat or not long:
             flash('Latitude dan Longitude harus diisi!', 'danger')
-            logging.warning(f"User {current_user.id} failed clock-in: Latitude or Longitude missing.")  # Logging jika lat/long tidak ada
-            return redirect(url_for('user_bp.clock_in'))
+            logging.warning(f"User  {current_user.id} failed clock-in: Latitude or Longitude missing.")  # Logging jika lat/long tidak ada
+            return jsonify({"status": "error", "message": "Latitude dan Longitude harus diisi!"}), 400
 
         # Simpan foto ke folder static/uploads
         photo_filename = secure_filename(photo.filename)
@@ -69,9 +92,12 @@ def clock_in():
         db.session.add(attendance)
         db.session.commit()
         flash('Clock In berhasil!', 'success')
-        logging.info(f"User {current_user.id} successfully clocked in at {lat}, {long} with photo {photo_filename}.")  # Logging jika clock-in berhasil
-        return redirect(url_for('user_bp.user_dashboard'))
+        logging.info(f"User  {current_user.id} successfully clocked in at {lat}, {long} with photo {photo_filename}.")  # Logging jika clock-in berhasil
+        
+        # Kembalikan respons JSON jika berhasil
+        return jsonify({"status": "success", "message": "Clock In berhasil!"}), 200
 
+    # Jika metode GET, render halaman clock in
     return render_template('employee/clock_in.html')
 
 @user_bp.route('/clock_out', methods=['GET', 'POST'])
@@ -86,17 +112,20 @@ def clock_out():
 
         if not attendance:
             flash('Tidak ada data Clock In sebelumnya untuk Clock Out!', 'danger')
-            logging.warning(f"User {current_user.id} attempted to clock out without clocking in.")  # Logging jika tidak ada clock-in sebelumnya
-            return redirect(url_for('user_bp.user_dashboard'))
+            logging.warning(f"User  {current_user.id} attempted to clock out without clocking in.")  # Logging jika tidak ada clock-in sebelumnya
+            return jsonify({"status": "error", "message": "Tidak ada data Clock In sebelumnya untuk Clock Out!"}), 400
 
         # Update data clock-out
         attendance.time_out = datetime.now()  # Simpan waktu clock out
         attendance.status = AttendanceStatus.CLOCK_OUT
         db.session.commit()
         flash('Clock Out berhasil!', 'success')
-        logging.info(f"User {current_user.id} successfully clocked out.")  # Logging jika clock-out berhasil
-        return redirect(url_for('user_bp.user_dashboard'))
+        logging.info(f"User  {current_user.id} successfully clocked out.")  # Logging jika clock-out berhasil
+        
+        # Kembalikan respons JSON jika berhasil
+        return jsonify({"status": "success", "message": "Clock Out berhasil!"}), 200
 
+    # Jika metode GET, render halaman clock out
     return render_template('employee/clock_out.html')
 
 @user_bp.route('/recap', methods=['GET'])
@@ -104,7 +133,26 @@ def clock_out():
 def recap():
     # Ambil semua catatan absensi untuk karyawan yang sedang login
     attendance_records = Attendance.query.filter_by(employee_id=current_user.id).all()
-    logging.info(f"User {current_user.id} accessed their attendance recap. Found {len(attendance_records)} records.")  # Logging saat mengakses recap
+    logging.info(f"User  {current_user.id} accessed their attendance recap. Found {len(attendance_records)} records.")  # Logging saat mengakses recap
+
+    # Jika permintaan adalah JSON, kembalikan data dalam format JSON
+    if request.is_json:
+        records_data = [
+            {
+                'date': record.date.strftime('%Y-%m-%d'),
+                'status': record.status.value,  # Menggunakan .value untuk mendapatkan string dari enum
+                'reason': record.reason if record.reason else 'N/A',
+                'photo': record.photo if record.photo else 'Tidak ada foto yang diunggah.',
+                'time': record.time.strftime('%H:%M:%S'),
+                'time_out': record.time_out.strftime('%H:%M:%S') if record.time_out else 'Belum Clock Out',
+                'latitude': record.latitude,
+                'longitude': record.longitude
+            }
+            for record in attendance_records
+        ]
+        return jsonify(records_data), 200
+
+    # Jika permintaan bukan JSON, render halaman rekap absensi
     return render_template('employee/recap.html', attendance_records=attendance_records, AttendanceStatus=AttendanceStatus)
 
 @user_bp.route('/leave', methods=['GET', 'POST'])
@@ -117,15 +165,15 @@ def leave():
 
         if not reason or not date:
             flash('Alasan dan tanggal harus diisi!', 'danger')
-            logging.warning(f"User {current_user.id} failed leave request: Reason or date not provided.")  # Logging jika alasan atau tanggal tidak diisi
-            return redirect(url_for('user_bp.leave'))
+            logging.warning(f"User  {current_user.id} failed leave request: Reason or date not provided.")  # Logging jika alasan atau tanggal tidak diisi
+            return jsonify({"status": "error", "message": "Alasan dan tanggal harus diisi!"}), 400
 
         # Simpan foto jika ada
         photo_filename = None
         if photo:
             photo_filename = secure_filename(photo.filename)
             photo.save(os.path.join(current_app.root_path, 'static', 'uploads', photo_filename))
-            logging.info(f"User {current_user.id} uploaded a leave photo: {photo_filename}")  # Logging saat foto diunggah
+            logging.info(f"User  {current_user.id} uploaded a leave photo: {photo_filename}")  # Logging saat foto diunggah
 
         # Simpan pengajuan izin ke database
         attendance = Attendance(
@@ -139,7 +187,10 @@ def leave():
         db.session.add(attendance)
         db.session.commit()
         flash('Pengajuan izin berhasil!', 'success')
-        logging.info(f"User {current_user.id} successfully submitted a leave request for {date}.")  # Logging pengajuan izin berhasil
-        return redirect(url_for('user_bp.user_dashboard'))
+        logging.info(f"User  {current_user.id} successfully submitted a leave request for {date}.")  # Logging pengajuan izin berhasil
+        
+        # Kembalikan respons JSON jika berhasil
+        return jsonify({"status": "success", "message": "Pengajuan izin berhasil!"}), 200
 
+    # Jika metode GET, render halaman pengajuan izin
     return render_template('employee/leave.html')

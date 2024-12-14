@@ -1,0 +1,13 @@
+<!-- app/templates/auth/logout.html -->
+{% extends "layout.html" %}
+
+{% block title %}Logout - Sistem Presensi{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">{{ message }}</h2>
+    <div class="text-center mt-3">
+        <a href="{{ url_for('auth_bp.login') }}" class="btn btn-primary">Kembali ke Login</a>
+    </div>
+</div>
+{% endblock %}

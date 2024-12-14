@@ -7,6 +7,7 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail  # Pastikan ini diimpor
 from config import Config
 
+
 # Inisialisasi objek
 db = SQLAlchemy()
 migrate = Migrate()
@@ -34,6 +35,10 @@ def create_app():
     
     mail.init_app(app)
 
+    # Konfigurasi LoginManager
+    login_manager.login_view = 'auth_bp.login'  # Ganti dengan nama blueprint dan endpoint login Anda
+    login_manager.login_message = "Please log in to access this page."  # Pesan yang ditampilkan saat pengguna tidak terautentikasi
+    
     logging.info("Application started.")  # Logging ketika aplikasi mulai dijalankan
 
     @app.context_processor

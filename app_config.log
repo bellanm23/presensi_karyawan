@@ -384,3 +384,562 @@
 2024-12-14 12:54:11,728 - INFO - User admin@gmail.com logged out.
 2024-12-14 12:54:11,732 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:11] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
 2024-12-14 12:54:11,744 - INFO - 127.0.0.1 - - [14/Dec/2024 12:54:11] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 13:05:29,449 - INFO - Config loaded successfully
+2024-12-14 13:05:29,547 - INFO - Application started.
+2024-12-14 13:05:29,856 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 13:05:29,865 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 13:05:29,896 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 13:05:29,904 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 13:05:29,911 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 13:05:29,935 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 13:05:29,938 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 15:40:42,391 - INFO - Config loaded successfully
+2024-12-14 15:40:42,503 - INFO - Application started.
+2024-12-14 15:40:42,852 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 15:40:42,866 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 15:40:42,896 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 15:40:42,906 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 15:40:42,912 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 15:40:42,952 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 15:40:42,955 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 15:40:46,289 - INFO - Home page accessed by user: Guest
+2024-12-14 15:40:46,405 - INFO - 127.0.0.1 - - [14/Dec/2024 15:40:46] "GET / HTTP/1.1" 200 -
+2024-12-14 15:40:48,928 - INFO - 127.0.0.1 - - [14/Dec/2024 15:40:48] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-12-14 15:40:49,063 - INFO - 127.0.0.1 - - [14/Dec/2024 15:40:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-14 15:41:16,470 - INFO - 127.0.0.1 - - [14/Dec/2024 15:41:16] "GET /auth/forgot-password HTTP/1.1" 200 -
+2024-12-14 15:41:19,200 - INFO - 127.0.0.1 - - [14/Dec/2024 15:41:19] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-12-14 15:50:44,421 - INFO - Config loaded successfully
+2024-12-14 15:50:44,493 - INFO - Application started.
+2024-12-14 15:52:01,644 - INFO - Config loaded successfully
+2024-12-14 15:52:01,691 - INFO - Application started.
+2024-12-14 15:52:01,861 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 15:52:01,877 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 15:52:01,905 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 15:52:01,911 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 15:52:01,920 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 15:52:01,942 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 15:52:01,943 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 15:52:03,997 - INFO - Home page accessed by user: Guest
+2024-12-14 15:52:04,032 - INFO - 127.0.0.1 - - [14/Dec/2024 15:52:04] "GET / HTTP/1.1" 200 -
+2024-12-14 15:52:06,648 - INFO - 127.0.0.1 - - [14/Dec/2024 15:52:06] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-12-14 15:52:06,763 - INFO - 127.0.0.1 - - [14/Dec/2024 15:52:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-14 15:53:13,949 - INFO - Config loaded successfully
+2024-12-14 15:53:13,996 - INFO - Application started.
+2024-12-14 15:53:14,126 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 15:53:14,132 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 15:53:14,147 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 15:53:14,158 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 15:53:14,161 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 15:53:14,188 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 15:53:14,190 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 15:53:15,919 - INFO - Home page accessed by user: Guest
+2024-12-14 15:53:15,941 - INFO - 127.0.0.1 - - [14/Dec/2024 15:53:15] "GET / HTTP/1.1" 200 -
+2024-12-14 15:53:17,373 - INFO - 127.0.0.1 - - [14/Dec/2024 15:53:17] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 15:59:47,925 - INFO - Config loaded successfully
+2024-12-14 15:59:47,980 - INFO - Application started.
+2024-12-14 15:59:48,142 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 15:59:48,151 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 15:59:48,177 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 15:59:48,181 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 15:59:48,189 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 15:59:48,215 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 15:59:48,215 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 15:59:49,783 - INFO - Home page accessed by user: Guest
+2024-12-14 15:59:49,819 - INFO - 127.0.0.1 - - [14/Dec/2024 15:59:49] "GET / HTTP/1.1" 200 -
+2024-12-14 15:59:50,133 - INFO - 127.0.0.1 - - [14/Dec/2024 15:59:50] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 15:59:51,290 - INFO - 127.0.0.1 - - [14/Dec/2024 15:59:51] "[31m[1mGET /auth/login HTTP/1.1[0m" 405 -
+2024-12-14 16:01:16,318 - INFO - Config loaded successfully
+2024-12-14 16:01:16,353 - INFO - Application started.
+2024-12-14 16:01:16,531 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:01:16,539 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:01:16,565 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:01:16,573 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:01:16,580 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:01:16,611 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:01:16,615 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:01:18,842 - INFO - Home page accessed by user: Guest
+2024-12-14 16:01:18,874 - INFO - 127.0.0.1 - - [14/Dec/2024 16:01:18] "GET / HTTP/1.1" 200 -
+2024-12-14 16:01:20,215 - INFO - 127.0.0.1 - - [14/Dec/2024 16:01:20] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 16:01:20,329 - INFO - 127.0.0.1 - - [14/Dec/2024 16:01:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-14 16:04:28,801 - INFO - 127.0.0.1 - - [14/Dec/2024 16:04:28] "[31m[1mGET /auth/logout HTTP/1.1[0m" 405 -
+2024-12-14 16:07:23,250 - INFO - Config loaded successfully
+2024-12-14 16:07:23,296 - INFO - Application started.
+2024-12-14 16:07:23,452 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:07:23,461 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:07:23,488 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:07:23,503 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:07:23,506 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:07:23,535 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:07:23,535 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:07:25,351 - INFO - Home page accessed by user: Guest
+2024-12-14 16:07:25,382 - INFO - 127.0.0.1 - - [14/Dec/2024 16:07:25] "GET / HTTP/1.1" 200 -
+2024-12-14 16:07:45,459 - INFO - 127.0.0.1 - - [14/Dec/2024 16:07:45] "[31m[1mGET /auth/logout HTTP/1.1[0m" 401 -
+2024-12-14 16:11:43,489 - INFO - 127.0.0.1 - - [14/Dec/2024 16:11:43] "[31m[1mGET /auth/forgot-password HTTP/1.1[0m" 405 -
+2024-12-14 16:13:06,426 - INFO - Config loaded successfully
+2024-12-14 16:13:06,473 - INFO - Application started.
+2024-12-14 16:13:06,655 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:13:06,663 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:13:06,685 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:13:06,694 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:13:06,696 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:13:06,721 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:13:06,722 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:13:08,588 - INFO - Home page accessed by user: Guest
+2024-12-14 16:13:08,625 - INFO - 127.0.0.1 - - [14/Dec/2024 16:13:08] "GET / HTTP/1.1" 200 -
+2024-12-14 16:13:11,268 - INFO - 127.0.0.1 - - [14/Dec/2024 16:13:11] "GET /auth/forgot-password HTTP/1.1" 200 -
+2024-12-14 16:19:45,893 - INFO - Config loaded successfully
+2024-12-14 16:19:45,939 - INFO - Application started.
+2024-12-14 16:19:46,086 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:19:46,095 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:19:46,140 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:19:46,154 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:19:46,157 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:19:46,202 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:19:46,203 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:19:54,965 - INFO - 127.0.0.1 - - [14/Dec/2024 16:19:54] "[33mGET /auth/reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:20:23,976 - INFO - 127.0.0.1 - - [14/Dec/2024 16:20:23] "[33mGET /reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:20:38,128 - INFO - Config loaded successfully
+2024-12-14 16:20:38,183 - INFO - Application started.
+2024-12-14 16:20:38,331 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:20:38,339 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:20:38,361 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:20:38,369 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:20:38,377 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:20:38,407 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:20:38,410 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:20:47,291 - INFO - 127.0.0.1 - - [14/Dec/2024 16:20:47] "[33mGET /reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:20:48,169 - INFO - 127.0.0.1 - - [14/Dec/2024 16:20:48] "[33mGET /reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:20:48,309 - INFO - 127.0.0.1 - - [14/Dec/2024 16:20:48] "[33mGET /reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:20:48,463 - INFO - 127.0.0.1 - - [14/Dec/2024 16:20:48] "[33mGET /reset-password HTTP/1.1[0m" 404 -
+2024-12-14 16:24:08,763 - INFO - Config loaded successfully
+2024-12-14 16:24:08,807 - INFO - Application started.
+2024-12-14 16:24:08,972 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:24:08,980 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:24:09,003 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:24:09,011 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:24:09,015 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:24:09,036 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:24:09,037 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:24:12,403 - INFO - Home page accessed by user: Guest
+2024-12-14 16:24:12,440 - INFO - 127.0.0.1 - - [14/Dec/2024 16:24:12] "GET / HTTP/1.1" 200 -
+2024-12-14 16:24:31,805 - ERROR - Token verification failed: Signature verification failed
+2024-12-14 16:24:31,805 - INFO - 127.0.0.1 - - [14/Dec/2024 16:24:31] "[31m[1mGET /auth/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6NiwiZXhwIjoxNzM0MTE3Nzc1fQ.K-vxkXfYsmEjvGEc9mLSkmk4dB8iaN-DLBmUphgzxnA HTTP/1.1[0m" 400 -
+2024-12-14 16:25:24,062 - INFO - 127.0.0.1 - - [14/Dec/2024 16:25:24] "[33mGET /auth/reset-password/ HTTP/1.1[0m" 404 -
+2024-12-14 16:35:18,080 - INFO - Config loaded successfully
+2024-12-14 16:35:18,124 - INFO - Application started.
+2024-12-14 16:35:18,269 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:35:18,308 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:35:18,326 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:35:18,333 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:35:18,338 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:35:18,357 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:35:18,358 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:35:21,749 - INFO - Home page accessed by user: Guest
+2024-12-14 16:35:21,784 - INFO - 127.0.0.1 - - [14/Dec/2024 16:35:21] "GET / HTTP/1.1" 200 -
+2024-12-14 16:35:24,852 - INFO - 127.0.0.1 - - [14/Dec/2024 16:35:24] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 16:35:50,272 - INFO - 127.0.0.1 - - [14/Dec/2024 16:35:50] "[31m[1mGET /dashboard HTTP/1.1[0m" 401 -
+2024-12-14 16:40:17,369 - INFO - Config loaded successfully
+2024-12-14 16:40:17,408 - INFO - Application started.
+2024-12-14 16:40:17,524 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:40:17,568 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:40:17,591 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:40:17,598 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:40:17,602 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:40:17,620 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:40:17,620 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:40:30,872 - INFO - 127.0.0.1 - - [14/Dec/2024 16:40:30] "[31m[1mGET /add_employee HTTP/1.1[0m" 401 -
+2024-12-14 16:45:37,513 - INFO - Config loaded successfully
+2024-12-14 16:45:37,559 - INFO - Application started.
+2024-12-14 16:45:37,682 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:45:37,694 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:45:37,719 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:45:37,726 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:45:37,730 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:45:37,752 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:45:37,754 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:45:39,367 - INFO - Home page accessed by user: Guest
+2024-12-14 16:45:39,402 - INFO - 127.0.0.1 - - [14/Dec/2024 16:45:39] "GET / HTTP/1.1" 200 -
+2024-12-14 16:45:45,277 - INFO - 127.0.0.1 - - [14/Dec/2024 16:45:45] "[32mGET /add_employee HTTP/1.1[0m" 302 -
+2024-12-14 16:45:45,307 - INFO - 127.0.0.1 - - [14/Dec/2024 16:45:45] "GET /auth/login?next=/add_employee HTTP/1.1" 200 -
+2024-12-14 16:46:20,883 - INFO - 127.0.0.1 - - [14/Dec/2024 16:46:20] "[32mGET /add_employee HTTP/1.1[0m" 302 -
+2024-12-14 16:46:20,953 - INFO - 127.0.0.1 - - [14/Dec/2024 16:46:20] "GET /auth/login?next=/add_employee HTTP/1.1" 200 -
+2024-12-14 16:46:43,668 - INFO - 127.0.0.1 - - [14/Dec/2024 16:46:43] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2024-12-14 16:46:43,714 - INFO - 127.0.0.1 - - [14/Dec/2024 16:46:43] "GET /auth/login?next=/dashboard HTTP/1.1" 200 -
+2024-12-14 16:50:37,871 - INFO - Config loaded successfully
+2024-12-14 16:50:37,913 - INFO - Application started.
+2024-12-14 16:50:38,037 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:50:38,080 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:50:38,101 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:50:38,109 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:50:38,113 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:50:38,132 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:50:38,132 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:50:47,561 - INFO - Home page accessed by user: Guest
+2024-12-14 16:50:47,599 - INFO - 127.0.0.1 - - [14/Dec/2024 16:50:47] "GET / HTTP/1.1" 200 -
+2024-12-14 16:51:01,231 - INFO - 127.0.0.1 - - [14/Dec/2024 16:51:01] "[32mGET /edit_employee/2 HTTP/1.1[0m" 302 -
+2024-12-14 16:51:01,278 - INFO - 127.0.0.1 - - [14/Dec/2024 16:51:01] "GET /auth/login?next=/edit_employee/2 HTTP/1.1" 200 -
+2024-12-14 16:52:12,750 - INFO - 127.0.0.1 - - [14/Dec/2024 16:52:12] "GET /auth/login?next=-eleted_employee/2 HTTP/1.1" 200 -
+2024-12-14 16:54:09,736 - INFO - Config loaded successfully
+2024-12-14 16:54:09,777 - INFO - Application started.
+2024-12-14 16:54:09,889 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:54:09,927 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:54:09,949 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:54:09,955 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:54:09,957 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:54:09,975 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:54:09,976 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:54:11,393 - INFO - Home page accessed by user: Guest
+2024-12-14 16:54:11,420 - INFO - 127.0.0.1 - - [14/Dec/2024 16:54:11] "GET / HTTP/1.1" 200 -
+2024-12-14 16:54:15,603 - INFO - 127.0.0.1 - - [14/Dec/2024 16:54:15] "[32mGET /list_employees HTTP/1.1[0m" 302 -
+2024-12-14 16:54:15,629 - INFO - 127.0.0.1 - - [14/Dec/2024 16:54:15] "GET /auth/login?next=/list_employees HTTP/1.1" 200 -
+2024-12-14 16:56:46,511 - INFO - Config loaded successfully
+2024-12-14 16:56:46,561 - INFO - Application started.
+2024-12-14 16:56:46,698 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:56:46,716 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:56:46,743 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:56:46,756 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:56:46,762 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:56:46,782 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:56:46,783 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:57:04,955 - INFO - 127.0.0.1 - - [14/Dec/2024 16:57:04] "[32mGET /attendance_report HTTP/1.1[0m" 302 -
+2024-12-14 16:57:04,985 - INFO - 127.0.0.1 - - [14/Dec/2024 16:57:04] "GET /auth/login?next=/attendance_report HTTP/1.1" 200 -
+2024-12-14 16:58:52,345 - INFO - Config loaded successfully
+2024-12-14 16:58:52,399 - INFO - Application started.
+2024-12-14 16:58:52,531 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 16:58:52,574 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 16:58:52,593 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 16:58:52,599 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 16:58:52,605 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 16:58:52,624 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 16:58:52,625 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 16:58:54,220 - INFO - Home page accessed by user: Guest
+2024-12-14 16:58:54,252 - INFO - 127.0.0.1 - - [14/Dec/2024 16:58:54] "GET / HTTP/1.1" 200 -
+2024-12-14 16:58:56,962 - INFO - 127.0.0.1 - - [14/Dec/2024 16:58:56] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:07:48,948 - INFO - Config loaded successfully
+2024-12-14 17:07:48,997 - INFO - Application started.
+2024-12-14 17:07:49,118 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:07:49,165 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:07:49,184 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:07:49,189 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:07:49,192 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:07:49,211 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:07:49,214 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:07:52,082 - INFO - Home page accessed by user: Guest
+2024-12-14 17:07:52,118 - INFO - 127.0.0.1 - - [14/Dec/2024 17:07:52] "GET / HTTP/1.1" 200 -
+2024-12-14 17:07:53,337 - INFO - 127.0.0.1 - - [14/Dec/2024 17:07:53] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:09:51,173 - INFO - Config loaded successfully
+2024-12-14 17:09:51,212 - INFO - Application started.
+2024-12-14 17:09:51,334 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:09:51,343 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:09:51,357 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:09:51,365 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:09:51,373 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:09:51,393 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:09:51,393 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:09:52,832 - INFO - Home page accessed by user: Guest
+2024-12-14 17:09:52,906 - INFO - 127.0.0.1 - - [14/Dec/2024 17:09:52] "GET / HTTP/1.1" 200 -
+2024-12-14 17:09:54,072 - INFO - 127.0.0.1 - - [14/Dec/2024 17:09:54] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:09:56,972 - INFO - 127.0.0.1 - - [14/Dec/2024 17:09:56] "[31m[1mPOST /auth/login HTTP/1.1[0m" 415 -
+2024-12-14 17:10:54,124 - INFO - Config loaded successfully
+2024-12-14 17:10:54,167 - INFO - Application started.
+2024-12-14 17:10:54,318 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:10:54,324 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:10:54,344 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:10:54,354 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:10:54,358 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:10:54,375 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:10:54,375 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:10:55,804 - INFO - Home page accessed by user: Guest
+2024-12-14 17:10:55,839 - INFO - 127.0.0.1 - - [14/Dec/2024 17:10:55] "GET / HTTP/1.1" 200 -
+2024-12-14 17:10:57,192 - INFO - 127.0.0.1 - - [14/Dec/2024 17:10:57] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:10:59,459 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 17:10:59,564 - INFO - User  found: admin@gmail.com, Status: 1
+2024-12-14 17:10:59,921 - INFO - User  admin@gmail.com successfully logged in.
+2024-12-14 17:10:59,921 - INFO - 127.0.0.1 - - [14/Dec/2024 17:10:59] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 17:13:29,188 - INFO - Config loaded successfully
+2024-12-14 17:13:29,236 - INFO - Application started.
+2024-12-14 17:13:29,415 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:13:29,422 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:13:29,446 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:13:29,452 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:13:29,458 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:13:29,475 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:13:29,477 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:13:31,030 - INFO - Home page accessed by user: Guest
+2024-12-14 17:13:31,065 - INFO - 127.0.0.1 - - [14/Dec/2024 17:13:31] "GET / HTTP/1.1" 200 -
+2024-12-14 17:13:42,711 - ERROR - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\coba_app\presensi_karyawan\app\routes\auth_routes.py", line 77, in logout
+    return render_template('auth/logout.html', message="User  tidak terautentikasi!")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\jinja2\environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\jinja2\environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\jinja2\environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bella\anaconda3\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: auth/logout.html
+2024-12-14 17:13:42,742 - INFO - 127.0.0.1 - - [14/Dec/2024 17:13:42] "[35m[1mGET /auth/logout HTTP/1.1[0m" 500 -
+2024-12-14 17:16:18,851 - INFO - Config loaded successfully
+2024-12-14 17:16:18,911 - INFO - Application started.
+2024-12-14 17:16:19,051 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:16:19,058 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:16:19,076 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:16:19,078 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:16:19,090 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:16:19,119 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:16:19,119 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:16:35,150 - INFO - Home page accessed by user: Guest
+2024-12-14 17:16:35,180 - INFO - 127.0.0.1 - - [14/Dec/2024 17:16:35] "GET / HTTP/1.1" 200 -
+2024-12-14 17:16:42,500 - INFO - 127.0.0.1 - - [14/Dec/2024 17:16:42] "GET /auth/logout HTTP/1.1" 200 -
+2024-12-14 17:17:11,206 - INFO - 127.0.0.1 - - [14/Dec/2024 17:17:11] "[33mGET /logout HTTP/1.1[0m" 404 -
+2024-12-14 17:19:03,633 - INFO - Config loaded successfully
+2024-12-14 17:19:03,685 - INFO - Application started.
+2024-12-14 17:19:03,840 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:19:03,850 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:19:03,867 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:19:03,870 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:19:03,878 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:19:03,890 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:19:03,890 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:19:05,602 - INFO - Home page accessed by user: Guest
+2024-12-14 17:19:05,637 - INFO - 127.0.0.1 - - [14/Dec/2024 17:19:05] "GET / HTTP/1.1" 200 -
+2024-12-14 17:19:14,530 - INFO - 127.0.0.1 - - [14/Dec/2024 17:19:14] "[33mGET /auth/forgot_password HTTP/1.1[0m" 404 -
+2024-12-14 17:24:07,527 - INFO - Config loaded successfully
+2024-12-14 17:24:07,575 - INFO - Application started.
+2024-12-14 17:24:07,745 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:24:07,753 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:24:07,773 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:24:07,779 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:24:07,783 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:24:07,804 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:24:07,805 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:24:13,024 - INFO - Home page accessed by user: Guest
+2024-12-14 17:24:13,052 - INFO - 127.0.0.1 - - [14/Dec/2024 17:24:13] "GET / HTTP/1.1" 200 -
+2024-12-14 17:24:16,089 - INFO - 127.0.0.1 - - [14/Dec/2024 17:24:16] "GET /auth/forgot-password HTTP/1.1" 200 -
+2024-12-14 17:34:49,552 - INFO - Config loaded successfully
+2024-12-14 17:34:49,598 - INFO - Application started.
+2024-12-14 17:34:49,754 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:34:49,761 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:34:49,787 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:34:49,793 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:34:49,801 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:34:49,839 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:34:49,840 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:34:56,402 - INFO - Home page accessed by user: Guest
+2024-12-14 17:34:56,438 - INFO - 127.0.0.1 - - [14/Dec/2024 17:34:56] "GET / HTTP/1.1" 200 -
+2024-12-14 17:40:46,038 - INFO - Config loaded successfully
+2024-12-14 17:40:46,097 - INFO - Application started.
+2024-12-14 17:40:46,287 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:40:46,303 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:40:46,331 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:40:46,350 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:40:46,416 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:40:46,449 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:40:46,449 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:40:48,242 - INFO - Home page accessed by user: Guest
+2024-12-14 17:40:48,275 - INFO - 127.0.0.1 - - [14/Dec/2024 17:40:48] "GET / HTTP/1.1" 200 -
+2024-12-14 17:40:57,937 - INFO - 127.0.0.1 - - [14/Dec/2024 17:40:57] "[32mGET /attendance_report HTTP/1.1[0m" 302 -
+2024-12-14 17:40:58,014 - INFO - 127.0.0.1 - - [14/Dec/2024 17:40:58] "GET /auth/login?next=/attendance_report HTTP/1.1" 200 -
+2024-12-14 17:56:15,283 - INFO - Config loaded successfully
+2024-12-14 17:56:15,326 - INFO - Application started.
+2024-12-14 17:56:15,476 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 17:56:15,487 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 17:56:15,546 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 17:56:15,558 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 17:56:15,566 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 17:56:15,592 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 17:56:15,595 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 17:56:17,257 - INFO - Home page accessed by user: Guest
+2024-12-14 17:56:17,292 - INFO - 127.0.0.1 - - [14/Dec/2024 17:56:17] "GET / HTTP/1.1" 200 -
+2024-12-14 17:56:19,209 - INFO - 127.0.0.1 - - [14/Dec/2024 17:56:19] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:57:46,891 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 17:57:46,977 - INFO - User  found: admin@gmail.com, Status: 1
+2024-12-14 17:57:47,334 - INFO - User  admin@gmail.com successfully logged in.
+2024-12-14 17:57:47,334 - INFO - 127.0.0.1 - - [14/Dec/2024 17:57:47] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 17:57:49,505 - INFO - Loading user with ID: 1
+2024-12-14 17:57:49,515 - INFO - 127.0.0.1 - - [14/Dec/2024 17:57:49] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:57:55,019 - INFO - Attempting to login with email: mawar@gmail.com
+2024-12-14 17:57:55,027 - INFO - User  found: mawar@gmail.com, Status: 0
+2024-12-14 17:57:55,414 - INFO - User  mawar@gmail.com successfully logged in.
+2024-12-14 17:57:55,414 - INFO - 127.0.0.1 - - [14/Dec/2024 17:57:55] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 17:57:58,417 - INFO - Loading user with ID: 2
+2024-12-14 17:57:58,427 - INFO - 127.0.0.1 - - [14/Dec/2024 17:57:58] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 17:58:09,295 - INFO - Attempting to login with email: bellanideni123@gmail.com
+2024-12-14 17:58:09,302 - WARNING - Failed login attempt. Email bellanideni123@gmail.com not found in database.
+2024-12-14 17:58:09,302 - INFO - 127.0.0.1 - - [14/Dec/2024 17:58:09] "[33mPOST /auth/login HTTP/1.1[0m" 404 -
+2024-12-14 17:58:13,814 - INFO - Loading user with ID: 2
+2024-12-14 17:58:13,825 - INFO - 127.0.0.1 - - [14/Dec/2024 17:58:13] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 20:04:33,436 - INFO - Config loaded successfully
+2024-12-14 20:04:33,562 - INFO - Application started.
+2024-12-14 20:04:33,923 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 20:04:33,942 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 20:04:33,972 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 20:04:33,992 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 20:04:34,004 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 20:04:34,053 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 20:04:34,058 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 20:04:54,063 - INFO - Home page accessed by user: Guest
+2024-12-14 20:04:54,090 - INFO - 127.0.0.1 - - [14/Dec/2024 20:04:54] "GET / HTTP/1.1" 200 -
+2024-12-14 20:04:54,383 - INFO - 127.0.0.1 - - [14/Dec/2024 20:04:54] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 20:05:37,209 - INFO - 127.0.0.1 - - [14/Dec/2024 20:05:37] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 20:06:00,905 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 20:06:01,020 - INFO - User  found: admin@gmail.com, Status: 1
+2024-12-14 20:06:01,440 - INFO - User  admin@gmail.com successfully logged in.
+2024-12-14 20:06:01,444 - INFO - 127.0.0.1 - - [14/Dec/2024 20:06:01] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 20:19:23,529 - INFO - Loading user with ID: 1
+2024-12-14 20:19:23,541 - INFO - 127.0.0.1 - - [14/Dec/2024 20:19:23] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 21:23:16,822 - INFO - Config loaded successfully
+2024-12-14 21:23:16,902 - INFO - Application started.
+2024-12-14 21:23:17,062 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 21:23:17,122 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 21:23:17,162 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 21:23:17,172 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 21:23:17,177 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 21:23:17,220 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 21:23:17,222 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 21:23:19,852 - INFO - Home page accessed by user: Guest
+2024-12-14 21:23:19,992 - INFO - 127.0.0.1 - - [14/Dec/2024 21:23:19] "GET / HTTP/1.1" 200 -
+2024-12-14 21:23:20,232 - INFO - 127.0.0.1 - - [14/Dec/2024 21:23:20] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 21:23:25,982 - INFO - 127.0.0.1 - - [14/Dec/2024 21:23:25] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 21:23:28,772 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 21:23:28,852 - INFO - User  found: admin@gmail.com, Status: 1
+2024-12-14 21:23:29,222 - INFO - User  admin@gmail.com successfully logged in.
+2024-12-14 21:23:29,222 - INFO - 127.0.0.1 - - [14/Dec/2024 21:23:29] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 21:25:04,925 - INFO - Attempting to login with email: admin@gmail.com
+2024-12-14 21:25:04,930 - INFO - User  found: admin@gmail.com, Status: 1
+2024-12-14 21:25:05,385 - INFO - User  admin@gmail.com successfully logged in.
+2024-12-14 21:25:05,396 - INFO - 127.0.0.1 - - [14/Dec/2024 21:25:05] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 21:36:20,857 - INFO - Config loaded successfully
+2024-12-14 21:36:20,909 - INFO - Application started.
+2024-12-14 21:36:21,033 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 21:36:21,041 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 21:36:21,062 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 21:36:21,066 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 21:36:21,073 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 21:36:21,096 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 21:36:21,096 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 21:36:22,853 - INFO - Home page accessed by user: Guest
+2024-12-14 21:36:22,889 - INFO - 127.0.0.1 - - [14/Dec/2024 21:36:22] "GET / HTTP/1.1" 200 -
+2024-12-14 21:36:39,230 - INFO - 127.0.0.1 - - [14/Dec/2024 21:36:39] "[33mGET /admin_dashboard HTTP/1.1[0m" 404 -
+2024-12-14 21:49:59,131 - INFO - Config loaded successfully
+2024-12-14 21:49:59,255 - INFO - Application started.
+2024-12-14 21:49:59,394 - INFO - Registered 'auth_bp' blueprint.
+2024-12-14 21:49:59,400 - INFO - Registered 'admin_bp' blueprint.
+2024-12-14 21:49:59,423 - INFO - Registered 'user_bp' blueprint.
+2024-12-14 21:49:59,424 - INFO - Registered 'employee_bp' blueprint.
+2024-12-14 21:49:59,434 - INFO - Registered 'attendance_bp' blueprint.
+2024-12-14 21:49:59,453 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-14 21:49:59,454 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-14 21:50:14,441 - INFO - Home page accessed by user: Guest
+2024-12-14 21:50:14,517 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:14] "GET / HTTP/1.1" 200 -
+2024-12-14 21:50:14,771 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:14] "GET /static/favicon.ico HTTP/1.1" 200 -
+2024-12-14 21:50:18,801 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:18] "GET /auth/login HTTP/1.1" 200 -
+2024-12-14 21:50:38,146 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:38] "[32mGET /attendance_report HTTP/1.1[0m" 302 -
+2024-12-14 21:50:38,176 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:38] "GET /auth/login?next=/attendance_report HTTP/1.1" 200 -
+2024-12-14 21:50:44,022 - INFO - Attempting to login with email: coy@gmail.com
+2024-12-14 21:50:44,132 - INFO - User  found: coy@gmail.com, Status: 0
+2024-12-14 21:50:44,466 - INFO - User  coy@gmail.com successfully logged in.
+2024-12-14 21:50:44,471 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:44] "POST /auth/login HTTP/1.1" 200 -
+2024-12-14 21:50:50,037 - INFO - Loading user with ID: 4
+2024-12-14 21:50:50,047 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:50] "[31m[1mGET /attendance_report HTTP/1.1[0m" 403 -
+2024-12-14 21:50:54,772 - INFO - Loading user with ID: 4
+2024-12-14 21:50:54,772 - INFO - 127.0.0.1 - - [14/Dec/2024 21:50:54] "[31m[1mGET /attendance_report HTTP/1.1[0m" 403 -
+2024-12-14 21:51:17,533 - INFO - 127.0.0.1 - - [14/Dec/2024 21:51:17] "[33mGET /leave HTTP/1.1[0m" 404 -
+2024-12-14 21:51:47,774 - INFO - Loading user with ID: 4
+2024-12-14 21:51:47,784 - INFO - 127.0.0.1 - - [14/Dec/2024 21:51:47] "GET /employee/leave HTTP/1.1" 200 -
+2024-12-14 21:52:08,091 - INFO - Loading user with ID: 4
+2024-12-14 21:52:08,104 - INFO - Leave photo uploaded for user 4: Sick_.jpg
+2024-12-14 21:52:08,145 - INFO - Leave request successfully submitted for user 4 on 2024-12-14
+2024-12-14 21:52:08,149 - INFO - 127.0.0.1 - - [14/Dec/2024 21:52:08] "POST /employee/leave HTTP/1.1" 200 -
+2024-12-14 21:53:15,560 - INFO - Loading user with ID: 4
+2024-12-14 21:53:15,566 - INFO - Profile page accessed by user: 4
+2024-12-14 21:53:15,606 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:15] "GET /employee/profile HTTP/1.1" 200 -
+2024-12-14 21:53:15,708 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:15] "[36mGET /static/uploads/foto.jpg HTTP/1.1[0m" 304 -
+2024-12-14 21:53:52,107 - INFO - Loading user with ID: 4
+2024-12-14 21:53:52,118 - INFO - Recap page accessed by user: 4, Found 2 attendance records
+2024-12-14 21:53:52,159 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:52] "GET /employee/recap HTTP/1.1" 200 -
+2024-12-14 21:53:52,292 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:52] "[36mGET /static/uploads/selfie.png HTTP/1.1[0m" 304 -
+2024-12-14 21:53:52,317 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:52] "GET /static/uploads/Sick_.jpg HTTP/1.1" 200 -
+2024-12-14 21:53:59,777 - INFO - Loading user with ID: 4
+2024-12-14 21:53:59,797 - INFO - 127.0.0.1 - - [14/Dec/2024 21:53:59] "GET /user/clock_in HTTP/1.1" 200 -
+2024-12-14 21:54:10,782 - INFO - Loading user with ID: 4
+2024-12-14 21:54:10,826 - INFO - User  4 successfully clocked in at -6.138735617051342, 106.82432206610143 with photo selfie.png.
+2024-12-14 21:54:10,828 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:10] "POST /user/clock_in HTTP/1.1" 200 -
+2024-12-14 21:54:28,158 - INFO - Loading user with ID: 4
+2024-12-14 21:54:28,168 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:28] "GET /user/clock_out HTTP/1.1" 200 -
+2024-12-14 21:54:30,543 - INFO - Loading user with ID: 4
+2024-12-14 21:54:30,581 - INFO - User  4 successfully clocked out.
+2024-12-14 21:54:30,581 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:30] "POST /user/clock_out HTTP/1.1" 200 -
+2024-12-14 21:54:35,782 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:35] "[33mGET /user/rekap HTTP/1.1[0m" 404 -
+2024-12-14 21:54:39,529 - INFO - Loading user with ID: 4
+2024-12-14 21:54:39,534 - INFO - User  4 accessed their attendance recap. Found 3 records.
+2024-12-14 21:54:39,534 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:39] "GET /user/recap HTTP/1.1" 200 -
+2024-12-14 21:54:39,664 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:39] "[36mGET /static/uploads/Sick_.jpg HTTP/1.1[0m" 304 -
+2024-12-14 21:54:39,664 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:39] "GET /static/uploads/selfie.png HTTP/1.1" 200 -
+2024-12-14 21:54:44,500 - INFO - Loading user with ID: 4
+2024-12-14 21:54:44,509 - INFO - User  4 accessed their dashboard.
+2024-12-14 21:54:44,531 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:44] "GET /user/user_dashboard HTTP/1.1" 200 -
+2024-12-14 21:54:44,654 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:44] "[36mGET /static/uploads/foto.jpg HTTP/1.1[0m" 304 -
+2024-12-14 21:54:54,711 - INFO - Loading user with ID: 4
+2024-12-14 21:54:54,711 - INFO - User   coy@gmail.com logged out.
+2024-12-14 21:54:54,729 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:54] "GET /auth/logout HTTP/1.1" 200 -
+2024-12-14 21:54:57,939 - INFO - 127.0.0.1 - - [14/Dec/2024 21:54:57] "GET /auth/login HTTP/1.1" 200 -

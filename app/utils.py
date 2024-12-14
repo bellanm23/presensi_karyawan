@@ -61,6 +61,14 @@ def delete_employee_and_related_data(user_id):
     logging.info(f"Changes committed to the database for user ID: {user_id}")  # Log setelah commit perubahan
 
 
+def generate_access_token(user, expires_in=3600):
+    """Menghasilkan token akses untuk pengguna."""
+    payload = {
+        'user_id': user.id,
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=expires_in)
+    }
+    return jwt.encode(payload, current_app.config['SECRET_KEY'], algorithm='HS256')
+
 def generate_reset_token(user_id, expires_in=600):
     """Menghasilkan token reset password untuk pengguna."""
     logging.info(f"Generating reset token for user ID: {user_id}")  # Log saat token reset dibuat

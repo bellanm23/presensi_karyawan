@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Blueprint, render_template, request, session, redirect, url_for, flash, current_app
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash, current_app, jsonify
 from app import db
 from app.models import Attendance, AttendanceStatus
 from datetime import datetime
@@ -19,7 +19,7 @@ attendance_bp = Blueprint('attendance', __name__)
 @attendance_bp.route('/record', methods=['GET', 'POST'])
 def record_attendance():
     if request.method == 'POST':
-        photo = request.files['photo']  # Ambil file foto dari form
+        photo = request.files.get('photo')  # Ambil file foto dari form
         photo_filename = None
         
         if photo:
@@ -37,8 +37,7 @@ def record_attendance():
 
             except Exception as e:
                 logging.error(f"Error while uploading photo: {e}")  # Logging jika terjadi kesalahan saat upload foto
-                flash('Terjadi kesalahan saat mengunggah foto. Silakan coba lagi.', 'danger')
-                return redirect(url_for('attendance.record_attendance'))
+                return jsonify({"status": "error", "message": "Terjadi kesalahan saat mengunggah foto. Silakan coba lagi."}), 500
 
         # Simpan data absensi ke database
         try:
@@ -51,11 +50,14 @@ def record_attendance():
             )
             db.session.add(attendance)
             db.session.commit()
-            flash('Absensi berhasil!')
             logging.info(f"Attendance recorded for employee ID {session['user_id']} on {datetime.today().date()} at {datetime.now().time()}")  # Logging absensi yang berhasil
+            
+            # Kembalikan respons JSON jika berhasil
+            return jsonify({"status": "success", "message": "Absensi berhasil!"}), 200
         except Exception as e:
             db.session.rollback()  # Rollback jika terjadi kesalahan saat menyimpan absensi
             logging.error(f"Error while recording attendance for employee ID {session['user_id']}: {e}")  # Logging error saat menyimpan absensi
-            flash('Terjadi kesalahan saat mencatat absensi. Silakan coba lagi.', 'danger')
+            return jsonify({"status": "error", "message": "Terjadi kesalahan saat mencatat absensi. Silakan coba lagi."}), 500
 
+    # Jika metode GET, render halaman absensi
     return render_template('employee/attendance.html')

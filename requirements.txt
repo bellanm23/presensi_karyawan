@@ -3,7 +3,7 @@ aext-assistant-server==0.0.1
 aext-core==0.0.1
 aext-core-server==0.0.1
 aext-panels==0.0.2
-aext-panels-server==0.0.1
+aext-panels-server==0.0.2
 aext-share-notebook==0.0.1
 aext-share-notebook-server==0.0.1
 aext-shared==0.0.1

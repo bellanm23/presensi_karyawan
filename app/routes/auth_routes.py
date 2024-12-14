@@ -32,8 +32,8 @@ def login():
         logging.info(f"Attempting to login with email: {email}")
 
         if not email or not password:
-            logging.info(f'email = {email}')
-            logging.info(f'password = {password}')
+            # logging.info(f'email = {email}')
+            # logging.info(f'password = {password}')
             return jsonify({"code": 400, "status": "Bad Request", "message": "Email dan password harus diisi!"}), 400
 
         user = User.query.filter_by(email=email).first()
@@ -111,7 +111,12 @@ def reset_password(token):
         return jsonify({"code": 400, "status": "Bad Request", "message": "Token tidak valid atau telah kedaluwarsa."}), 400
 
     if request.method == 'POST':
-        new_password = request.form.get('password')  # Change to form data
+        # Ambil data dari body JSON
+        data = request.get_json()
+        if not data:
+            return jsonify({"code": 400, "status": "Bad Request", "message": "Body request kosong!"}), 400
+
+        new_password = data.get('password')  # Ambil password dari JSON body
         if not new_password:
             return jsonify({"code": 400, "status": "Bad Request", "message": "Password baru harus diisi!"}), 400
 

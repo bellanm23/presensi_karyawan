@@ -1,5 +1,5 @@
 import os
-import logging
+import logging, base64, uuid
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, jsonify
 from flask_login import login_required, current_user
 from app import db
@@ -92,21 +92,35 @@ def recap():
 @login_required
 def leave():
     if request.method == 'POST':
-        reason = request.form.get('reason')
-        photo = request.files.get('photo')  # Ambil file foto dari form
-        date = request.form.get('date')
+        # Ambil data dari body JSON
+        data = request.get_json()
+        if not data:
+            return jsonify({"status": "error", "message": "Body request kosong atau tidak valid!"}), 400
 
+        # Ambil data dari JSON
+        reason = data.get('reason')
+        date = data.get('date')
+        photo_data = data.get('photo')  # Ambil data foto sebagai base64 string jika ada
+
+        # Validasi input
         if not reason or not date:
-            flash('Alasan dan tanggal harus diisi!', 'danger')
-            logging.warning(f"Leave request failed for user {current_user.id}: Reason or date not provided")  # Logging jika pengajuan izin gagal
+            logging.warning(f"Leave request failed for user {current_user.id}: Reason or date not provided")
             return jsonify({"status": "error", "message": "Alasan dan tanggal harus diisi!"}), 400
 
         # Simpan foto jika ada
         photo_filename = None
-        if photo:
-            photo_filename = secure_filename(photo.filename)
-            photo.save(os.path.join(current_app.root_path, 'static', 'uploads', photo_filename))
-            logging.info(f"Leave photo uploaded for user {current_user.id}: {photo_filename}")  # Logging saat foto diunggah
+        if photo_data:
+            try:
+                # Decode base64 string dan simpan sebagai file
+                photo_binary = base64.b64decode(photo_data)
+                photo_filename = f"{uuid.uuid4().hex}.jpg"  # Buat nama file unik
+                photo_path = os.path.join(current_app.root_path, 'static', 'uploads', photo_filename)
+                with open(photo_path, 'wb') as photo_file:
+                    photo_file.write(photo_binary)
+                logging.info(f"Leave photo uploaded for user {current_user.id}: {photo_filename}")
+            except Exception as e:
+                logging.error(f"Error decoding or saving photo for user {current_user.id}: {e}")
+                return jsonify({"status": "error", "message": "Foto tidak valid atau gagal disimpan!"}), 400
 
         # Simpan pengajuan izin ke database
         try:
@@ -120,14 +134,11 @@ def leave():
             )
             db.session.add(attendance)
             db.session.commit()
-            flash('Pengajuan izin berhasil!', 'success')
-            logging.info(f"Leave request successfully submitted for user {current_user.id} on {date}")  # Logging pengajuan izin berhasil
-            
-            # Kembalikan respons JSON jika berhasil
+            logging.info(f"Leave request successfully submitted for user {current_user.id} on {date}")
             return jsonify({"status": "success", "message": "Pengajuan izin berhasil!"}), 200
         except Exception as e:
-            db.session.rollback()  # Rollback jika terjadi kesalahan saat menyimpan pengajuan izin
-            logging.error(f"Error while submitting leave request for user {current_user.id}: {e}")  # Logging kesalahan saat menyimpan pengajuan izin
+            db.session.rollback()
+            logging.error(f"Error while submitting leave request for user {current_user.id}: {e}")
             return jsonify({"status": "error", "message": "Terjadi kesalahan saat mengajukan izin. Silakan coba lagi."}), 500
 
     # Jika metode GET, render halaman pengajuan izin

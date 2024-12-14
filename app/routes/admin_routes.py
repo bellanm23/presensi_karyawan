@@ -48,13 +48,19 @@ def admin_dashboard():
 @login_required
 def add_employee():
     if request.method == 'POST':
-        # Ambil data dari form
-        name = request.form.get('name')
-        gender = request.form.get('gender')
-        email = request.form.get('email')
-        phone_number = request.form.get('phone')
-        password = request.form.get('password')
-        photo = request.files.get('photo_profile')  # Pastikan ini sesuai dengan nama input
+        # Ambil data JSON
+        data = request.get_json()
+        if not data:
+            return jsonify({'message': 'Body request kosong atau tidak valid!'}), 400
+
+        name = data.get('name')
+        gender = data.get('gender')
+        email = data.get('email')
+        phone_number = data.get('phone')
+        password = data.get('password')
+
+        # Ambil file dari request
+        photo = request.files.get('photo_profile')  # Pastikan file tetap dikirim sebagai multipart/form-data
 
         # Validasi input
         if not name or not email or not password or not phone_number:
@@ -103,27 +109,47 @@ def add_employee():
     # Jika metode GET, render halaman untuk menambahkan pegawai
     return render_template('admin/add_employee.html')
 
+
 @admin_bp.route('/edit_employee/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_employee(id):
     employee = Employee.query.get_or_404(id)  # Ambil data pegawai berdasarkan ID
 
     if request.method == 'POST':
-        # Update data pegawai
-        employee.name = request.form.get('name')  # Ambil data dari form
-        employee.email = request.form.get('email')  # Ambil data dari form
-        db.session.commit()
-        logging.info(f'Employee with ID {id} updated.')
+        # Ambil data JSON dari request
+        data = request.get_json()
+        if not data:
+            return jsonify({'message': 'Body request kosong atau tidak valid!'}), 400
 
-        # Kembalikan respons dalam format JSON
-        return jsonify({'message': 'Employee updated successfully!', 'employee': {
-            'id': employee.id,
-            'name': employee.name,
-            'email': employee.email
-        }}), 200
+        # Update data pegawai berdasarkan input JSON
+        name = data.get('name')
+        email = data.get('email')
+
+        # Validasi input
+        if not name or not email:
+            return jsonify({'message': 'Name dan email harus diisi!'}), 400
+
+        # Update data pegawai
+        employee.name = name
+        employee.email = email
+
+        # Simpan perubahan ke database
+        try:
+            db.session.commit()
+            logging.info(f'Employee with ID {id} updated.')
+            return jsonify({'message': 'Employee updated successfully!', 'employee': {
+                'id': employee.id,
+                'name': employee.name,
+                'email': employee.email
+            }}), 200
+        except Exception as e:
+            db.session.rollback()
+            logging.error(f'Error updating employee with ID {id}: {e}')
+            return jsonify({'message': 'Terjadi kesalahan saat memperbarui data!'}), 500
 
     # Jika metode GET, render halaman edit
     return render_template('admin/edit_employee.html', employee=employee)
+
 
 @admin_bp.route('/delete_employee/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -205,42 +231,55 @@ def attendance_report():
 @login_required
 def location_settings():
     if request.method == 'POST':
-        latitude = request.form.get('latitude')
-        longitude = request.form.get('longitude')
-        radius = request.form.get('radius')
-        # date_str = request.form.get('date')  # Get the date as a string
-        clock_in_str = request.form.get('clock_in')
-        clock_out_str = request.form.get('clock_out')
+        # Ambil data dari body request JSON
+        data = request.get_json()
+        if not data:
+            return jsonify({'message': 'Body request kosong atau tidak valid!'}), 400
 
-        # Convert the date string to a datetime.date object
-        # date = datetime.strptime(date_str, '%Y-%m-%d').date()
+        # Ambil data dari JSON
+        latitude = data.get('latitude')
+        longitude = data.get('longitude')
+        radius = data.get('radius')
+        clock_in_str = data.get('clock_in')
+        clock_out_str = data.get('clock_out')
 
-        # Convert clock_in and clock_out strings to time objects
-        clock_in = datetime.strptime(clock_in_str, '%H:%M').time()
-        clock_out = datetime.strptime(clock_out_str, '%H:%M').time()
+        # Validasi input
+        if not latitude or not longitude or not radius or not clock_in_str or not clock_out_str:
+            return jsonify({'message': 'Semua field harus diisi!'}), 400
 
-        # Save data to the database
-        new_setting = LocationSetting(
-            latitude=latitude,
-            longitude=longitude,
-            radius=radius,
-            # date=date,  # Use the converted date object
-            clock_in=clock_in,  # Use the converted time object
-            clock_out=clock_out  # Use the converted time object
-        )
-        db.session.add(new_setting)
-        db.session.commit()
-        logging.info('New location setting added successfully.')
+        try:
+            # Convert clock_in dan clock_out ke format time
+            clock_in = datetime.strptime(clock_in_str, '%H:%M').time()
+            clock_out = datetime.strptime(clock_out_str, '%H:%M').time()
 
-        # Kembalikan respons dalam format JSON
-        return jsonify({'message': 'Location settings saved successfully!', 'setting': {
-            'latitude': latitude,
-            'longitude': longitude,
-            'radius': radius,
-            # 'date': date_str,
-            'clock_in': clock_in_str,
-            'clock_out': clock_out_str
-        }}), 201
+            # Simpan data ke database
+            new_setting = LocationSetting(
+                latitude=latitude,
+                longitude=longitude,
+                radius=radius,
+                clock_in=clock_in,
+                clock_out=clock_out
+            )
+            db.session.add(new_setting)
+            db.session.commit()
+
+            logging.info('New location setting added successfully.')
+
+            # Kembalikan respons JSON
+            return jsonify({'message': 'Location settings saved successfully!', 'setting': {
+                'latitude': latitude,
+                'longitude': longitude,
+                'radius': radius,
+                'clock_in': clock_in_str,
+                'clock_out': clock_out_str
+            }}), 201
+
+        except ValueError:
+            return jsonify({'message': 'Format waktu clock_in dan clock_out harus HH:MM!'}), 400
+        except Exception as e:
+            db.session.rollback()
+            logging.error(f'Error saving location setting: {e}')
+            return jsonify({'message': 'Terjadi kesalahan saat menyimpan pengaturan lokasi!'}), 500
 
     # Jika metode GET, render halaman HTML
     return render_template('admin/location_settings.html')

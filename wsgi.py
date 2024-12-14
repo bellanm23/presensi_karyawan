@@ -2,7 +2,7 @@ import sys
 import os
 
 # Tambahkan path ke folder aplikasi Anda
-path = '/home/rizdansyah/presensi_karyawan'  # Ganti 'username' dengan nama pengguna PythonAnywhere Anda
+path = '/home/bellanm123/absensi_app'  # Ganti 'username' dengan nama pengguna PythonAnywhere Anda
 
 if path not in sys.path:
     sys.path.append(path)

@@ -1,5 +1,4 @@
-import os
-import logging
+import logging, os, base64
 from flask import Blueprint, render_template, redirect, url_for, flash, request, current_app, jsonify
 from flask_login import login_required, current_user
 from app import db
@@ -59,19 +58,20 @@ def user_dashboard():
 @login_required
 def clock_in():
     if request.method == 'POST':
-        photo = request.files.get('photo')  # Ambil file foto dari form
-        lat = request.form.get('lat')
-        long = request.form.get('long')
+        data = request.get_json()
+        photo = request.files.get('photo')  # Ambil file foto dari request
+        lat = data.get('lat')
+        long = data.get('long')
 
         if not photo:
             flash('Foto tidak ditemukan. Silakan coba lagi.', 'danger')
-            logging.warning(f"User  {current_user.id} failed clock-in: Photo not provided.")  # Logging jika foto tidak ada
+            logging.warning(f"User {current_user.id} failed clock-in: Photo not provided.")  # Logging jika foto tidak ada
             return jsonify({"status": "error", "message": "Foto tidak ditemukan. Silakan coba lagi."}), 400
 
         # Validasi latitude dan longitude
         if not lat or not long:
             flash('Latitude dan Longitude harus diisi!', 'danger')
-            logging.warning(f"User  {current_user.id} failed clock-in: Latitude or Longitude missing.")  # Logging jika lat/long tidak ada
+            logging.warning(f"User {current_user.id} failed clock-in: Latitude or Longitude missing.")  # Logging jika lat/long tidak ada
             return jsonify({"status": "error", "message": "Latitude dan Longitude harus diisi!"}), 400
 
         # Simpan foto ke folder static/uploads
@@ -92,13 +92,14 @@ def clock_in():
         db.session.add(attendance)
         db.session.commit()
         flash('Clock In berhasil!', 'success')
-        logging.info(f"User  {current_user.id} successfully clocked in at {lat}, {long} with photo {photo_filename}.")  # Logging jika clock-in berhasil
-        
+        logging.info(f"User {current_user.id} successfully clocked in at {lat}, {long} with photo {photo_filename}.")  # Logging jika clock-in berhasil
+
         # Kembalikan respons JSON jika berhasil
         return jsonify({"status": "success", "message": "Clock In berhasil!"}), 200
 
     # Jika metode GET, render halaman clock in
     return render_template('employee/clock_in.html')
+
 
 @user_bp.route('/clock_out', methods=['GET', 'POST'])
 @login_required
@@ -159,21 +160,33 @@ def recap():
 @login_required
 def leave():
     if request.method == 'POST':
-        reason = request.form.get('reason')
-        photo = request.files.get('photo')  # Ambil file foto dari form
-        date = request.form.get('date')
+        # Ambil data JSON dari request body
+        data = request.get_json()
 
+        reason = data.get('reason')
+        date = data.get('date')
+        photo = data.get('photo')  # Foto dalam format base64
+
+        # Validasi alasan dan tanggal
         if not reason or not date:
             flash('Alasan dan tanggal harus diisi!', 'danger')
-            logging.warning(f"User  {current_user.id} failed leave request: Reason or date not provided.")  # Logging jika alasan atau tanggal tidak diisi
+            logging.warning(f"User {current_user.id} failed leave request: Reason or date not provided.")  # Logging jika alasan atau tanggal tidak diisi
             return jsonify({"status": "error", "message": "Alasan dan tanggal harus diisi!"}), 400
 
         # Simpan foto jika ada
         photo_filename = None
         if photo:
-            photo_filename = secure_filename(photo.filename)
-            photo.save(os.path.join(current_app.root_path, 'static', 'uploads', photo_filename))
-            logging.info(f"User  {current_user.id} uploaded a leave photo: {photo_filename}")  # Logging saat foto diunggah
+            try:
+                # Mengonversi foto dari base64 ke file
+                photo_data = base64.b64decode(photo.split(',')[1])  # Menghilangkan prefix data:image/jpeg;base64,
+                photo_filename = secure_filename(f'{current_user.id}_leave.jpg')
+                photo_path = os.path.join(current_app.root_path, 'static', 'uploads', photo_filename)
+                with open(photo_path, 'wb') as f:
+                    f.write(photo_data)
+                logging.info(f"User {current_user.id} uploaded a leave photo: {photo_filename}")  # Logging saat foto diunggah
+            except Exception as e:
+                logging.error(f"Error saving the photo for user {current_user.id}: {e}")
+                return jsonify({"status": "error", "message": "Gagal menyimpan foto!"}), 500
 
         # Simpan pengajuan izin ke database
         attendance = Attendance(
@@ -187,7 +200,7 @@ def leave():
         db.session.add(attendance)
         db.session.commit()
         flash('Pengajuan izin berhasil!', 'success')
-        logging.info(f"User  {current_user.id} successfully submitted a leave request for {date}.")  # Logging pengajuan izin berhasil
+        logging.info(f"User {current_user.id} successfully submitted a leave request for {date}.")  # Logging pengajuan izin berhasil
         
         # Kembalikan respons JSON jika berhasil
         return jsonify({"status": "success", "message": "Pengajuan izin berhasil!"}), 200

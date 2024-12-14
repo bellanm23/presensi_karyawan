@@ -24,21 +24,24 @@ mail = Mail()  # Inisialisasi Flask-Mail
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Ambil data dari form jika menggunakan form HTML
-        email = request.form.get('email')
-        password = request.form.get('password')
+        # Ambil data dari body JSON
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
 
         logging.info(f"Attempting to login with email: {email}")
 
         if not email or not password:
+            logging.info(f'email = {email}')
+            logging.info(f'password = {password}')
             return jsonify({"code": 400, "status": "Bad Request", "message": "Email dan password harus diisi!"}), 400
 
         user = User.query.filter_by(email=email).first()
         if user:
-            logging.info(f"User  found: {user.email}, Status: {user.status}")
+            logging.info(f"User found: {user.email}, Status: {user.status}")
             if bcrypt.check_password_hash(user.password, password):
                 login_user(user)
-                logging.info(f'User  {user.email} successfully logged in.')
+                logging.info(f'User {user.email} successfully logged in.')
                 return jsonify({
                     "code": 200,
                     "status": "OK",
@@ -54,6 +57,7 @@ def login():
 
     # Jika metode GET, render halaman login
     return render_template('auth/login.html')
+
 
 # Logout
 @auth_bp.route('/logout', methods=['GET', 'POST'])

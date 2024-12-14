@@ -26,7 +26,7 @@ bcrypt = Bcrypt()
 @login_required
 def admin_dashboard():
     # Logika untuk menampilkan dashboard admin
-    logging.info(f'User  {current_user.email} accessed the dashboard.')
+    logging.info(f'User {current_user.email} accessed the dashboard.')
 
     # Ambil data untuk dashboard
     dashboard_data = {
@@ -37,30 +37,34 @@ def admin_dashboard():
         'total_attendance_records': Attendance.query.count()  # Menghitung total catatan absensi
     }
 
-    # Jika ingin mengembalikan data dalam format JSON
-    if request.args.get('format') == 'json':
-        return jsonify(dashboard_data), 200
+    # Log request format untuk memastikan parameter format diterima
+    format = request.args.get('format')
+    logging.info(f"Request format: {format}")
 
-    # Jika metode GET, render halaman dashboard
+    # Jika format = json, kirimkan respons dalam format JSON
+    if format == 'json':
+        response = jsonify(dashboard_data)
+        logging.info(f"JSON Response: {response.get_data()}")
+        return response, 200
+
+    # Jika format tidak diminta atau tidak ada, render halaman HTML
     return render_template('admin/dashboard.html', dashboard_data=dashboard_data)
 
 @admin_bp.route('/add_employee', methods=['GET', 'POST'])
 @login_required
 def add_employee():
     if request.method == 'POST':
-        # Ambil data JSON
+        # Pastikan data JSON diterima
         data = request.get_json()
         if not data:
             return jsonify({'message': 'Body request kosong atau tidak valid!'}), 400
 
+        # Ambil data dari JSON
         name = data.get('name')
         gender = data.get('gender')
         email = data.get('email')
         phone_number = data.get('phone')
         password = data.get('password')
-
-        # Ambil file dari request
-        photo = request.files.get('photo_profile')  # Pastikan file tetap dikirim sebagai multipart/form-data
 
         # Validasi input
         if not name or not email or not password or not phone_number:
@@ -79,7 +83,8 @@ def add_employee():
         # Hash password
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        # Simpan nama file foto jika ada
+        # Ambil file foto (optional)
+        photo = request.files.get('photo_profile')  # Pastikan file tetap dikirim sebagai multipart/form-data
         photo_filename = None
         if photo:
             photo_filename = secure_filename(photo.filename)
@@ -103,10 +108,13 @@ def add_employee():
         db.session.add(new_employee)
         db.session.commit()
 
+        # Log info
         logging.info(f'New employee added with email {email}.')
+        
+        # Kembalikan response JSON
         return jsonify({'message': 'Employee added successfully!'}), 201
 
-    # Jika metode GET, render halaman untuk menambahkan pegawai
+    # Jika metode GET, render halaman untuk menambahkan pegawai (misalnya admin)
     return render_template('admin/add_employee.html')
 
 
@@ -137,42 +145,48 @@ def edit_employee(id):
         try:
             db.session.commit()
             logging.info(f'Employee with ID {id} updated.')
-            return jsonify({'message': 'Employee updated successfully!', 'employee': {
-                'id': employee.id,
-                'name': employee.name,
-                'email': employee.email
-            }}), 200
+            return jsonify({
+                'message': 'Employee updated successfully!',
+                'employee': {
+                    'id': employee.id,
+                    'name': employee.name,
+                    'email': employee.email
+                }
+            }), 200
         except Exception as e:
             db.session.rollback()
             logging.error(f'Error updating employee with ID {id}: {e}')
             return jsonify({'message': 'Terjadi kesalahan saat memperbarui data!'}), 500
 
-    # Jika metode GET, render halaman edit
-    return render_template('admin/edit_employee.html', employee=employee)
+    # Jika metode GET, pastikan Anda merender halaman HTML hanya jika perlu
+    # Tetapi jika Anda ingin response JSON pada GET juga, bisa dikembalikan seperti berikut:
+    if request.method == 'GET':
+        return jsonify({
+            'id': employee.id,
+            'name': employee.name,
+            'email': employee.email
+        })
 
 
-@admin_bp.route('/delete_employee/<int:id>', methods=['GET', 'POST'])
+@admin_bp.route('/delete_employee/<int:id>', methods=['POST'])
 @login_required
 def delete_employee(id):
     user = User.query.get_or_404(id)  # Mengambil user berdasarkan ID
 
-    if request.method == 'POST':
-        try:
-            db.session.delete(user)  # Menghapus user
-            db.session.commit()
-            logging.info(f'User  with ID {id} and all related records deleted successfully.')
-            
-            # Kembalikan respons dalam format JSON
-            return jsonify({'message': 'User  and all related employees and attendance records deleted successfully!'}), 200
-        except Exception as e:
-            db.session.rollback()
-            logging.error(f'Error deleting user with ID {id}: {e}')
-            
-            # Kembalikan respons kesalahan dalam format JSON
-            return jsonify({'message': f'Error deleting user: {str(e)}'}), 500
+    try:
+        db.session.delete(user)  # Menghapus user
+        db.session.commit()
+        logging.info(f'User with ID {id} and all related records deleted successfully.')
+        
+        # Kembalikan respons dalam format JSON
+        return jsonify({'message': 'User and all related employees and attendance records deleted successfully!'}), 200
+    except Exception as e:
+        db.session.rollback()
+        logging.error(f'Error deleting user with ID {id}: {e}')
+        
+        # Kembalikan respons kesalahan dalam format JSON
+        return jsonify({'message': f'Error deleting user: {str(e)}'}), 500
 
-    # Jika metode GET, render halaman konfirmasi penghapusan
-    return render_template('admin/confirm_delete.html', user=user)
 
 @admin_bp.route('/list_employees', methods=['GET', 'POST'])
 @login_required
@@ -180,22 +194,19 @@ def list_employee():
     employees = Employee.query.all()  # Ambil semua pegawai dari tabel Employee
     logging.info(f'{len(employees)} employees listed.')
 
-    if request.method == 'POST':
-        # Kembalikan respons dalam format JSON
-        employee_list = [
-            {
-                'id': employee.id,
-                'name': employee.name,
-                'gender': employee.gender,
-                'email': employee.email,
-                'phone_number': employee.phone_number
-            }
-            for employee in employees
-        ]
-        return jsonify(employee_list), 200
+    # Kembalikan respons dalam format JSON pada kedua metode
+    employee_list = [
+        {
+            'id': employee.id,
+            'name': employee.name,
+            'gender': employee.gender,
+            'email': employee.email,
+            'phone_number': employee.phone_number
+        }
+        for employee in employees
+    ]
+    return jsonify(employee_list), 200
 
-    # Jika metode GET, render halaman HTML
-    return render_template('admin/list_employees.html', employees=employees)
 
 @admin_bp.route('/attendance_report', methods=['GET', 'POST'])
 @login_required
@@ -207,25 +218,23 @@ def attendance_report():
     attendance_records = Attendance.query.options(db.joinedload(Attendance.employee)).all()
     logging.info(f'{len(attendance_records)} attendance records fetched for report.')
 
-    if request.method == 'POST':
-        # Kembalikan respons dalam format JSON
-        attendance_list = [
-            {
-                'employee_id': record.employee_id,
-                'employee_name': record.employee.name if record.employee else 'N/A',
-                'status': record.status,
-                'date': record.date.strftime('%Y-%m-%d'),
-                'time': record.time.strftime('%H:%M:%S'),
-                'time_out': record.time_out.strftime('%H:%M:%S') if record.time_out else 'Not Clocked Out',
-                'reason': record.reason if record.reason else 'N/A',
-                'photo': record.photo if record.photo else 'No photo uploaded'
-            }
-            for record in attendance_records
-        ]
-        return jsonify(attendance_list), 200
+    # Kembalikan respons dalam format JSON untuk kedua metode (GET dan POST)
+    attendance_list = [
+        {
+            'employee_id': record.employee_id,
+            'employee_name': record.employee.name if record.employee else 'N/A',
+            'status': record.status,
+            'date': record.date.strftime('%Y-%m-%d'),
+            'time': record.time.strftime('%H:%M:%S'),
+            'time_out': record.time_out.strftime('%H:%M:%S') if record.time_out else 'Not Clocked Out',
+            'reason': record.reason if record.reason else 'N/A',
+            'photo': record.photo if record.photo else 'No photo uploaded'
+        }
+        for record in attendance_records
+    ]
+    
+    return jsonify(attendance_list), 200
 
-    # Jika metode GET, render halaman HTML
-    return render_template('admin/attendance_report.html', attendance_records=attendance_records)
 
 @admin_bp.route('/location_settings', methods=['GET', 'POST'])
 @login_required
@@ -281,5 +290,18 @@ def location_settings():
             logging.error(f'Error saving location setting: {e}')
             return jsonify({'message': 'Terjadi kesalahan saat menyimpan pengaturan lokasi!'}), 500
 
-    # Jika metode GET, render halaman HTML
-    return render_template('admin/location_settings.html')
+    # Jika metode GET, kembalikan data dalam format JSON
+    location_settings = LocationSetting.query.all()  # Ambil semua pengaturan lokasi
+    settings_list = [
+        {
+            'latitude': setting.latitude,
+            'longitude': setting.longitude,
+            'radius': setting.radius,
+            'clock_in': setting.clock_in.strftime('%H:%M'),
+            'clock_out': setting.clock_out.strftime('%H:%M')
+        }
+        for setting in location_settings
+    ]
+
+    return jsonify(settings_list), 200
+

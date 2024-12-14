@@ -1,5 +1,4 @@
 import sys
-import os
 
 # Tambahkan path ke folder aplikasi Anda
 path = '/home/bellanm123/absensi_app'  # Ganti 'username' dengan nama pengguna PythonAnywhere Anda

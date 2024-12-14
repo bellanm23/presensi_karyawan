@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Blueprint, render_template, request, session, redirect, url_for, flash, current_app, jsonify
+from flask import Blueprint, request, session, jsonify, current_app
 from app import db
 from app.models import Attendance, AttendanceStatus
 from datetime import datetime
@@ -37,7 +37,7 @@ def record_attendance():
 
             except Exception as e:
                 logging.error(f"Error while uploading photo: {e}")  # Logging jika terjadi kesalahan saat upload foto
-                return jsonify({"status": "error", "message": "Terjadi kesalahan saat mengunggah foto. Silakan coba lagi."}), 500
+                return jsonify({'message': 'Terjadi kesalahan saat mengunggah foto. Silakan coba lagi.'}), 500
 
         # Simpan data absensi ke database
         try:
@@ -51,13 +51,20 @@ def record_attendance():
             db.session.add(attendance)
             db.session.commit()
             logging.info(f"Attendance recorded for employee ID {session['user_id']} on {datetime.today().date()} at {datetime.now().time()}")  # Logging absensi yang berhasil
-            
-            # Kembalikan respons JSON jika berhasil
-            return jsonify({"status": "success", "message": "Absensi berhasil!"}), 200
+
+            # Kembalikan respons dalam format JSON
+            return jsonify({'message': 'Absensi berhasil!', 'attendance': {
+                'employee_id': session['user_id'],
+                'status': AttendanceStatus.CLOCK_IN,
+                'date': datetime.today().date().strftime('%Y-%m-%d'),
+                'time': datetime.now().time().strftime('%H:%M:%S'),
+                'photo': photo_filename
+            }}), 201
+
         except Exception as e:
             db.session.rollback()  # Rollback jika terjadi kesalahan saat menyimpan absensi
             logging.error(f"Error while recording attendance for employee ID {session['user_id']}: {e}")  # Logging error saat menyimpan absensi
-            return jsonify({"status": "error", "message": "Terjadi kesalahan saat mencatat absensi. Silakan coba lagi."}), 500
+            return jsonify({'message': 'Terjadi kesalahan saat mencatat absensi. Silakan coba lagi.'}), 500
 
-    # Jika metode GET, render halaman absensi
-    return render_template('employee/attendance.html')
+    # Jika metode GET, kembalikan respons JSON atau informasi lain yang diperlukan
+    return jsonify({'message': 'GET request received. Please send POST request to record attendance.'}), 200

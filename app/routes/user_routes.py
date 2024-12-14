@@ -22,11 +22,11 @@ user_bp = Blueprint('user_bp', __name__)
 def user_dashboard():
     employee = Employee.query.filter_by(user_id=current_user.id).first()
     attendances = Attendance.query.filter_by(employee_id=current_user.id).all()
-    
-    logging.info(f"User  {current_user.id} accessed their dashboard.")  # Logging saat pengguna mengakses dashboard
-    
-    # Jika permintaan adalah JSON, kembalikan data dalam format JSON
-    if request.is_json:
+
+    logging.info(f"User {current_user.id} accessed their dashboard.")  # Logging saat pengguna mengakses dashboard
+
+    # Cek apakah permintaan menginginkan JSON
+    if request.accept_mimetypes.best_match(['application/json', 'text/html']) == 'application/json':
         attendance_data = [
             {
                 'date': attendance.date.strftime('%Y-%m-%d'),
@@ -54,12 +54,13 @@ def user_dashboard():
     # Jika permintaan bukan JSON, render halaman dashboard
     return render_template('employee/user_dashboard.html', attendances=attendances, employee=employee)
 
+
 @user_bp.route('/clock_in', methods=['GET', 'POST'])
 @login_required
 def clock_in():
     if request.method == 'POST':
-        data = request.get_json()
-        photo = request.files.get('photo')  # Ambil file foto dari request
+        data = request.get_json()  # Mengambil data JSON dari request (jika ada)
+        photo = request.files.get('photo')  # Mengambil file foto dari request
         lat = data.get('lat')
         long = data.get('long')
 
@@ -101,6 +102,7 @@ def clock_in():
     return render_template('employee/clock_in.html')
 
 
+
 @user_bp.route('/clock_out', methods=['GET', 'POST'])
 @login_required
 def clock_out():
@@ -113,7 +115,7 @@ def clock_out():
 
         if not attendance:
             flash('Tidak ada data Clock In sebelumnya untuk Clock Out!', 'danger')
-            logging.warning(f"User  {current_user.id} attempted to clock out without clocking in.")  # Logging jika tidak ada clock-in sebelumnya
+            logging.warning(f"User {current_user.id} attempted to clock out without clocking in.")  # Logging jika tidak ada clock-in sebelumnya
             return jsonify({"status": "error", "message": "Tidak ada data Clock In sebelumnya untuk Clock Out!"}), 400
 
         # Update data clock-out
@@ -121,23 +123,25 @@ def clock_out():
         attendance.status = AttendanceStatus.CLOCK_OUT
         db.session.commit()
         flash('Clock Out berhasil!', 'success')
-        logging.info(f"User  {current_user.id} successfully clocked out.")  # Logging jika clock-out berhasil
+        logging.info(f"User {current_user.id} successfully clocked out.")  # Logging jika clock-out berhasil
         
-        # Kembalikan respons JSON jika berhasil
-        return jsonify({"status": "success", "message": "Clock Out berhasil!"}), 200
+        # Jika permintaan meminta JSON, kembalikan respons JSON
+        if request.accept_mimetypes.best_match(['application/json', 'text/html']) == 'application/json':
+            return jsonify({"status": "success", "message": "Clock Out berhasil!"}), 200
 
     # Jika metode GET, render halaman clock out
     return render_template('employee/clock_out.html')
+
 
 @user_bp.route('/recap', methods=['GET'])
 @login_required
 def recap():
     # Ambil semua catatan absensi untuk karyawan yang sedang login
     attendance_records = Attendance.query.filter_by(employee_id=current_user.id).all()
-    logging.info(f"User  {current_user.id} accessed their attendance recap. Found {len(attendance_records)} records.")  # Logging saat mengakses recap
+    logging.info(f"User {current_user.id} accessed their attendance recap. Found {len(attendance_records)} records.")  # Logging saat mengakses recap
 
-    # Jika permintaan adalah JSON, kembalikan data dalam format JSON
-    if request.is_json:
+    # Memeriksa apakah permintaan menginginkan JSON
+    if request.accept_mimetypes.best_match(['application/json', 'text/html']) == 'application/json':
         records_data = [
             {
                 'date': record.date.strftime('%Y-%m-%d'),
@@ -155,6 +159,7 @@ def recap():
 
     # Jika permintaan bukan JSON, render halaman rekap absensi
     return render_template('employee/recap.html', attendance_records=attendance_records, AttendanceStatus=AttendanceStatus)
+
 
 @user_bp.route('/leave', methods=['GET', 'POST'])
 @login_required
@@ -201,9 +206,11 @@ def leave():
         db.session.commit()
         flash('Pengajuan izin berhasil!', 'success')
         logging.info(f"User {current_user.id} successfully submitted a leave request for {date}.")  # Logging pengajuan izin berhasil
-        
-        # Kembalikan respons JSON jika berhasil
-        return jsonify({"status": "success", "message": "Pengajuan izin berhasil!"}), 200
+
+        # Memeriksa apakah permintaan menginginkan JSON
+        if request.accept_mimetypes.best_match(['application/json', 'text/html']) == 'application/json':
+            # Kembalikan respons JSON jika berhasil
+            return jsonify({"status": "success", "message": "Pengajuan izin berhasil!"}), 200
 
     # Jika metode GET, render halaman pengajuan izin
     return render_template('employee/leave.html')
